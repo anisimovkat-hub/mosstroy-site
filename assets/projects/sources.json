@@ -1,0 +1,87 @@
+{
+  "dmitrov-city": {
+    "file": "dmitrov-city.jpg",
+    "official": true,
+    "source": "https://berezovec.ru//img/jk-dmitrov-city/progres/24_04_22/DJI_0226.jpg"
+  },
+  "afrodita": {
+    "file": "afrodita.jpg",
+    "official": true,
+    "source": "https://berezovec.ru/img/project/afrodita1.jpg"
+  },
+  "lesnoy-kvartal": {
+    "file": "lesnoy-kvartal.jpg",
+    "official": true,
+    "source": "https://berezovec.ru/img/jk-lesnoy-kvartal/progres/08_06_2023/IMG_1059_cache.jpg"
+  },
+  "brigantina": {
+    "file": "brigantina.jpg",
+    "official": true,
+    "source": "https://storage.yandexcloud.net/granelleprod/media/projects/images/image/059f9413df80fe20cc9b8f4d37b4ad7ca1ab82bb.jpg"
+  },
+  "mytischi-city": {
+    "file": "mytischi-city.png",
+    "official": false,
+    "source": "https://dmitry-sasin.livejournal.com/349203.html"
+  },
+  "atlantis": {
+    "file": "atlantis.jpg",
+    "official": true,
+    "source": "https://atlantis-capital.ru/wp-content/uploads/2022/09/sep-atlantis-4.jpg"
+  },
+  "renovation-lihachevsky": {
+    "file": "renovation-lihachevsky.jpg",
+    "official": false,
+    "source": "temporary fallback: lesnoy-kvartal.jpg; official renovation page was unavailable during download"
+  },
+  "vysokie-zhavoronki": {
+    "file": "vysokie-zhavoronki.jpg",
+    "official": true,
+    "source": "https://storage.yandexcloud.net/granelleprod/media/projects/images/image/139f2967f71fa2e456d66964496e6f49a09389e7.jpg"
+  },
+  "pinsky": {
+    "file": "pinsky.png",
+    "official": false,
+    "source": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+  },
+  "mascotte": {
+    "file": "mascotte.png",
+    "official": true,
+    "source": "https://shoes-report.com/articles/kompanii_i_marki/kurs_na_moskvu_razvitie_seti_mascotte_v_novom_kontsepte_/"
+  },
+  "renovation-raduzhnaya": {
+    "file": "renovation-raduzhnaya.png",
+    "official": false,
+    "source": "https://rg.ru/2023/03/22/novosele-blizko.html"
+  },
+  "mytischi-city-1-5": {
+    "file": "mytischi-city-1-5.png",
+    "official": false,
+    "source": "https://dmitry-sasin.livejournal.com/349203.html"
+  },
+  "odintsovo-city-23": {
+    "file": "odintsovo-city-23.jpg",
+    "official": true,
+    "source": "https://cdn.idalite.ru/i/insecure/q:85/rs:fit:1920:1176/g:ce/bl:0/c:0/plain/s3://idalite-media/media/projects/1f155aae-9cbe-43af-8a4b-f48b666d4d4e/sites/blocks/0730747a42fe48e6a41c9cd00529395c.jpg"
+  },
+  "megapolis": {
+    "file": "megapolis.jpg",
+    "official": false,
+    "source": "temporary fallback: u2.jpg; official page was unavailable during download"
+  },
+  "odintsovo-city-2": {
+    "file": "odintsovo-city-2.jpg",
+    "official": true,
+    "source": "https://cdn.idalite.ru/i/insecure/q:85/rs:fit:1920:1176/g:ce/bl:0/c:0/plain/s3://idalite-media/media/projects/1f155aae-9cbe-43af-8a4b-f48b666d4d4e/sites/blocks/2e62a2818c0a4d399db362a1d20fb960.jpeg"
+  },
+  "u2": {
+    "file": "u2.jpg",
+    "official": true,
+    "source": "https://s3.ru1.storage.beget.cloud/5603ccacd391-u2-main/media/s/mt/i/a2c9a11f20e2964fe51eb208a59e84d4eecc558b_2025-12-09_18-39_2025-12-26_13-32_2026-01-15_15-43.webp"
+  },
+  "vyazemy-park": {
+    "file": "vyazemy-park.jpg",
+    "official": true,
+    "source": "https://cdn.idalite.ru/i/insecure/q:85/rs:fit:1920:1176/g:ce/bl:0/c:0/plain/s3://idalite-media/media/projects/f4e6230c-96b5-4e8a-9593-33468ec91192/sites/blocks/84ec93007ce048e4ba85ad234a96b011.jpg"
+  }
+}

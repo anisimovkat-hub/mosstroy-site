@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 86px; overflow-x: hidden; }
+  body { margin: 0; padding-top: 72px; overflow-x: hidden; font-family: 'Inter', Arial, sans-serif; color: #142033; background: #f4f8fb; -webkit-font-smoothing: antialiased; }
+  x-dc { display: block; }
+  h1, h2, h3, h4, p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  #menuToggle { display: none !important; }
+  .tech-hero { position: relative; min-height: 440px; display: flex; flex-direction: column; overflow: hidden; background: #0d2240; }
+  .tech-hero-photo { position: absolute; right: 0; top: 0; width: 64%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .tech-hero-blend { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(92deg, #0a1e3c 0%, #0d2240 31%, rgba(13,34,64,.95) 42%, rgba(13,34,64,.72) 55%, rgba(13,34,64,.32) 70%, rgba(13,34,64,0) 100%); }
+  .tech-hero-content { position: relative; z-index: 2; width: min(1240px, calc(100% - 48px)); margin: 0 auto; padding: 68px 0 38px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .tech-hero-title { font-size: clamp(42px, 6.2vw, 74px); font-weight: 800; line-height: .96; color: #fff; letter-spacing: -.01em; margin-bottom: 18px; max-width: 660px; text-shadow: 0 2px 18px rgba(0,0,0,.28); }
+  .tech-hero-lead { font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.82); max-width: 560px; }
+  .section-wrap { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
+  .section-title { display:flex; align-items:center; gap:9px; margin-bottom:22px; }
+  .section-title span { display:inline-block; width:7px; height:7px; border-radius:50%; background:#4ab8c8; box-shadow:0 0 0 4px rgba(74,184,200,.18); flex-shrink:0; }
+  .section-title h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #142033; }
+  .quality-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; }
+  .quality-card { min-height: 188px; padding:22px 20px; border:1px solid #dce8f2; border-radius:12px; background:#fff; box-shadow:0 3px 18px rgba(14,61,114,.07); }
+  .quality-card:nth-child(8n+1), .quality-card:nth-child(8n+3), .quality-card:nth-child(8n+6), .quality-card:nth-child(8n+8) { background:linear-gradient(145deg,#0d2240,#103f72); border-color:#103f72; box-shadow:0 8px 24px rgba(13,34,64,.16); }
+  .quality-card strong { display:block; margin-bottom:10px; color:#103f72; font-size:16px; line-height:1.25; }
+  .quality-card p { color:#627486; font-size:13px; line-height:1.6; }
+  .quality-card:nth-child(8n+1) strong, .quality-card:nth-child(8n+3) strong, .quality-card:nth-child(8n+6) strong, .quality-card:nth-child(8n+8) strong { color:#fff; }
+  .quality-card:nth-child(8n+1) p, .quality-card:nth-child(8n+3) p, .quality-card:nth-child(8n+6) p, .quality-card:nth-child(8n+8) p { color:rgba(255,255,255,.76); }
+  .tech-list { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+  .tech-item { position:relative; overflow:hidden; min-height:230px; border-radius:14px; background:#0d2240; color:#fff; box-shadow:0 4px 22px rgba(14,61,114,.12); }
+  .tech-item img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.62; }
+  .tech-item::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(13,34,64,.18),rgba(13,34,64,.88)); }
+  .tech-item-content { position:absolute; inset:auto 0 0 0; z-index:1; padding:22px; }
+  .tech-item-content strong { display:block; font-size:18px; line-height:1.18; margin-bottom:9px; }
+  .tech-item-content p { color:rgba(255,255,255,.78); font-size:13px; line-height:1.55; }
+  .contacts-compact-grid { display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start; }
+  .contacts-info-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px; }
+  .contacts-tender { border-left:1px solid #e6eff6;padding-left:28px; }
+  @media (max-width: 980px) {
+    .quality-grid { grid-template-columns: repeat(2, 1fr); }
+    .tech-list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 920px) {
+    #menuToggle { display: flex !important; }
+    #mainNav { display: none !important; position: absolute; top: 62px; right: 0; left: auto; width: min(282px, calc(100vw - 48px)); flex-direction: column; gap: 2px; padding: 8px; background: rgba(255,255,255,.96); border: 1px solid #d4e0ea; border-radius: 14px; box-shadow: 0 18px 45px rgba(13,34,64,.18); z-index: 99; backdrop-filter: blur(18px); }
+    #mainNav.open { display: flex !important; }
+    #mainNav a { padding: 13px 14px !important; border-bottom: 0 !important; border-radius: 10px; color: #142033 !important; }
+    #mainNav a:hover { background: #eef6fa; }
+    #mainNav a span { display: none !important; }
+    #navEmail { display: none !important; }
+    .footer-cols { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 600px) {
+    .tech-hero { min-height: 0 !important; }
+    .tech-hero-photo { left:0 !important; right:auto !important; width:100% !important; height:58% !important; object-position:center top !important; }
+    .tech-hero-blend { background: linear-gradient(180deg, rgba(13,34,64,0) 0%, rgba(13,34,64,.18) 28%, rgba(13,34,64,.75) 48%, #0d2240 65%, #0d2240 100%) !important; }
+    .tech-hero-content { width:min(100% - 48px,520px) !important; padding:clamp(300px,46vh,410px) 0 32px !important; justify-content:flex-end !important; }
+    .tech-hero-title { font-size:clamp(34px,10vw,46px) !important; line-height:1.04 !important; }
+    .quality-grid { grid-template-columns:repeat(2, 1fr) !important; gap:10px !important; }
+    .quality-card { min-height: 152px !important; padding:16px 13px !important; border-radius:10px !important; }
+    .quality-card strong { font-size:13.5px !important; margin-bottom:7px !important; }
+    .quality-card p { font-size:11.5px !important; line-height:1.45 !important; }
+    .quality-card:nth-child(8n+1), .quality-card:nth-child(8n+3), .quality-card:nth-child(8n+6), .quality-card:nth-child(8n+8) { background:#fff; border-color:#dce8f2; box-shadow:0 3px 18px rgba(14,61,114,.07); }
+    .quality-card:nth-child(8n+1) strong, .quality-card:nth-child(8n+3) strong, .quality-card:nth-child(8n+6) strong, .quality-card:nth-child(8n+8) strong { color:#103f72; }
+    .quality-card:nth-child(8n+1) p, .quality-card:nth-child(8n+3) p, .quality-card:nth-child(8n+6) p, .quality-card:nth-child(8n+8) p { color:#627486; }
+    .quality-card:nth-child(4n+1), .quality-card:nth-child(4n+4) { background:linear-gradient(145deg,#0d2240,#103f72); border-color:#103f72; box-shadow:0 8px 24px rgba(13,34,64,.16); }
+    .quality-card:nth-child(4n+1) strong, .quality-card:nth-child(4n+4) strong { color:#fff; }
+    .quality-card:nth-child(4n+1) p, .quality-card:nth-child(4n+4) p { color:rgba(255,255,255,.76); }
+    .tech-list { grid-template-columns:1fr !important; }
+    .contacts-compact-grid { grid-template-columns: 1fr !important; gap: 22px !important; }
+    .contacts-info-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .contacts-tender { border-left: 0 !important; border-top: 1px solid #e6eff6 !important; padding-left: 0 !important; padding-top: 20px !important; }
+  }
+  @media (max-width: 480px) {
+    header > div { width: calc(100% - 24px) !important; gap: 8px !important; min-height: 64px !important; }
+    header a[href="Главная.dc.html"] { gap: 8px !important; min-width: 0 !important; }
+    header a[href="Главная.dc.html"] > div:first-child { width: 34px !important; height: 40px !important; padding-bottom: 5px !important; flex-shrink: 0 !important; }
+    header a[href="Главная.dc.html"] > div:last-child > div:first-child { font-size: 14px !important; letter-spacing: .035em !important; }
+    header a[href="Главная.dc.html"] > div:last-child > div:last-child { display: none !important; }
+    header > div > div:last-child { gap: 7px !important; }
+    #navPhone { padding: 8px 9px !important; font-size: 12px !important; border-radius: 7px !important; }
+    #menuToggle { width: 36px !important; height: 36px !important; border-radius: 7px !important; }
+  }
+</style>
+</helmet>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,251,253,.96);border-bottom:1px solid rgba(212,224,234,.8);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);">
+  <div style="width:min(1360px,calc(100% - 48px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:24px;position:relative;">
+    <a href="Главная.dc.html" style="display:flex;align-items:center;gap:11px;flex-shrink:0;">
+      <div style="width:40px;height:46px;border-radius:5px;background:linear-gradient(180deg,#254e7c,#0d2240);display:grid;place-items:end center;padding-bottom:5px;">
+        <svg width="24" height="30" viewBox="0 0 26 32" fill="none"><path d="M0 32V12L5 9V32H8V2.5L13 0L18 2.5V32H21V9L26 12V32Z" fill="rgba(255,255,255,.92)"/></svg>
+      </div>
+      <div>
+        <div style="font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#0d2240;line-height:1.1;">МОССТРОЙ</div>
+        <div style="font-size:8.5px;color:#8097aa;text-transform:uppercase;letter-spacing:.09em;margin-top:2px;">строительное объединение</div>
+      </div>
+    </a>
+    <nav id="mainNav" style="display:flex;align-items:center;gap:14px;font-size:13.5px;font-weight:500;">
+      <a href="Главная.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">О компании</a>
+      <a href="Услуги.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Услуги</a>
+      <a href="Проекты.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Проекты</a>
+      <a href="Технологии.dc.html" style="color:#103f72;padding:22px 10px 18px;position:relative;white-space:nowrap;">Технологии и качество<span style="position:absolute;bottom:12px;left:10px;right:10px;height:2px;background:#4ab8c8;border-radius:1px;display:block;"></span></a>
+      <a href="Главная.dc.html#contacts" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Контакты</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;margin-left:auto;">
+      <a id="navPhone" href="tel:+79160409065" style="padding:9px 12px;border:1px solid #d4e0ea;border-radius:7px;background:#fff;font-size:13.5px;font-weight:700;color:#142033;white-space:nowrap;">+7 (916) 040-90-65</a>
+      <a id="navEmail" href="mailto:real.stroy.real@yandex.ru" style="padding:9px 12px;border:1px solid #d4e0ea;border-radius:7px;background:#fff;font-size:13.5px;font-weight:700;color:#103f72;white-space:nowrap;">real.stroy.real@yandex.ru</a>
+      <button id="menuToggle" aria-label="Меню" style="width:38px;height:38px;border:1px solid #d4e0ea;border-radius:7px;background:#fff;cursor:pointer;align-items:center;justify-content:center;">
+        <svg width="17" height="13" viewBox="0 0 18 14" fill="none"><path d="M0 1h18M0 7h18M0 13h18" stroke="#142033" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="tech-hero">
+  <img class="tech-hero-photo" src="./svc-01-monolith.png" alt="Монолитные работы и контроль качества на объекте" decoding="async">
+  <div class="tech-hero-blend"></div>
+  <div class="tech-hero-content">
+    <h1 class="tech-hero-title"><span>Технологии и </span><br>качество</h1>
+    <p class="tech-hero-lead">Работаем по СНиП, ГОСТ и СП, ведём производственный контроль и исполнительную документацию. На каждом объекте фиксируем этапы работ, контролируем материалы, сроки, безопасность и соответствие проектной документации.</p>
+  </div>
+</section>
+
+<section style="padding:48px 0 34px;">
+  <div class="section-wrap">
+    <div class="section-title"><span></span><h2>Система качества</h2></div>
+    <div class="quality-grid">
+      <article class="quality-card"><strong>Графики и контрольные точки</strong><p>Фиксируем этапы работ, сроки поставок и точки проверки до выхода бригад на объект.</p></article>
+      <article class="quality-card"><strong>Производственный контроль</strong><p>Проверяем соответствие проекту, скрытые работы, узлы примыканий и качество выполнения.</p></article>
+      <article class="quality-card"><strong>Исполнительная документация</strong><p>Ведём акты, схемы, журналы, паспорта и фотофиксацию по этапам сдачи.</p></article>
+      <article class="quality-card"><strong>Нормы и СРО</strong><p>Работаем по СНиП, ГОСТ и СП. Компания состоит в СРО № СРО-9701146460-20260624-1526.</p></article>
+      <article class="quality-card"><strong>Входной контроль материалов</strong><p>Проверяем паспорта, сертификаты, маркировку партий и соответствие спецификациям.</p></article>
+      <article class="quality-card"><strong>Безопасность на объекте</strong><p>Применяем ППР, СИЗ, инструктажи по охране труда и пожарной безопасности.</p></article>
+      <article class="quality-card"><strong>Команда под задачу</strong><p>Подключаем ПТО, сметный и тендерный отделы, юристов и профильные бригады.</p></article>
+      <article class="quality-card"><strong>Логистика материалов</strong><p>Организуем прямые поставки с заводов и поэтажную комплектацию под график работ.</p></article>
+    </div>
+  </div>
+</section>
+
+<section style="padding:14px 0 48px;">
+  <div class="section-wrap">
+    <div class="section-title"><span></span><h2>Технологии работ</h2></div>
+    <div class="tech-list">
+      <article class="tech-item"><img src="./svc-01-monolith.png" alt="Монолитные конструкции"><div class="tech-item-content"><strong>Монолитные конструкции</strong><p>Опалубка, армирование, бетонирование с виброуплотнением, уход за бетоном, отбор образцов и исполнительные схемы.</p></div></article>
+      <article class="tech-item"><img src="./svc-04-pipes.png" alt="Инженерные сети"><div class="tech-item-content"><strong>Инженерные сети</strong><p>Монтаж систем ХВС, ГВС, отопления, канализации и пожаротушения с опрессовкой, испытаниями и пусконаладкой.</p></div></article>
+      <article class="tech-item"><img src="./svc-09-roof.png" alt="Кровля и гидроизоляция"><div class="tech-item-content"><strong>Кровля и гидроизоляция</strong><p>Пароизоляция, утепление, гидроизоляционный ковёр, примыкания, воронки, аэраторы и испытания проливом.</p></div></article>
+      <article class="tech-item"><img src="./svc-05-masonry.png" alt="Кладка стен и перегородок"><div class="tech-item-content"><strong>Кладка и перегородки</strong><p>Геодезический контроль, армирование кладки, монтаж перемычек, усиление проёмов и герметизация примыканий.</p></div></article>
+      <article class="tech-item"><img src="./svc-07-foundation.png" alt="Гидроизоляция фундамента"><div class="tech-item-content"><strong>Гидроизоляция фундамента</strong><p>Подготовка основания, мембранная или обмазочная изоляция, гидрошпонки, дренаж и искровой контроль.</p></div></article>
+      <article class="tech-item"><img src="./svc-12-supply.png" alt="Материалы и логистика"><div class="tech-item-content"><strong>Материалы и комплектация</strong><p>Подбор по спецификациям, поузловая и поэтажная комплектация, графики JIT, паспорта и сертификаты.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" style="padding:0 0 48px;">
+  <div class="section-wrap">
+    <div class="section-title" style="margin-bottom:16px;"><span></span><h2>Контакты</h2></div>
+    <div class="contacts-compact-grid" style="border:1px solid #dce8f2;border-radius:16px;background:#fff;padding:28px 32px;box-shadow:0 4px 24px rgba(14,61,114,.08);">
+      <div>
+        <div style="font-size:12px;color:#103f72;margin-bottom:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Общие контакты</div>
+        <div class="contacts-info-grid">
+          <div><div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">Телефон</div><a href="tel:+79160409065" style="font-size:17px;font-weight:800;color:#142033;line-height:1.35;">+7 (916) 040-90-65</a></div>
+          <div><div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">E-mail</div><a href="mailto:real.stroy.real@yandex.ru" style="font-size:17px;font-weight:800;color:#142033;line-height:1.35;">real.stroy.real@yandex.ru</a></div>
+          <div><div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">Адрес</div><p style="font-size:15px;font-weight:700;color:#142033;line-height:1.45;">ул. Большая Почтовая, 26В строение 2</p></div>
+          <div><div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">График</div><p style="font-size:15px;font-weight:700;color:#142033;line-height:1.45;">Пн-Пт, 10:00-19:00</p></div>
+        </div>
+      </div>
+      <div class="contacts-tender">
+        <div style="font-size:12px;color:#103f72;margin-bottom:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Тендерный отдел</div>
+        <div style="display:grid;gap:10px;"><a href="tel:+79168801777" style="font-size:17px;font-weight:800;color:#103f72;">+7 (916) 880-17-77</a><a href="mailto:real.stroy.real@yandex.ru" style="font-size:15px;font-weight:800;color:#103f72;">real.stroy.real@yandex.ru</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0b1d33;color:#fff;padding:36px 0 26px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div class="footer-cols" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:28px;margin-bottom:28px;align-items:start;">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;"><div style="width:32px;height:36px;border-radius:4px;background:rgba(255,255,255,.12);display:grid;place-items:end center;padding-bottom:4px;"><svg width="20" height="24" viewBox="0 0 26 32" fill="none"><path d="M0 32V12L5 9V32H8V2.5L13 0L18 2.5V32H21V9L26 12V32Z" fill="rgba(255,255,255,.78)"/></svg></div><div><div style="font-size:14px;font-weight:800;letter-spacing:.05em;">МОССТРОЙ</div><div style="font-size:8px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.09em;">строительное объединение</div></div></div>
+        <p style="font-size:11.5px;color:rgba(255,255,255,.42);line-height:1.5;">Строительные, отделочные и инженерные работы в Москве и Московской области.</p>
+      </div>
+      <div><div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">О компании</div><a href="Главная.dc.html" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">О нас</a><a href="Технологии.dc.html" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">Технологии и качество</a></div>
+      <div><div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">Услуги</div><a href="Услуги.dc.html" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">Все услуги</a></div>
+      <div><div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">Проекты</div><a href="Проекты.dc.html" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">Все проекты</a></div>
+      <div><div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">Контакты</div><a href="tel:+79160409065" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">+7 (916) 040-90-65</a><a href="mailto:real.stroy.real@yandex.ru" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">real.stroy.real@yandex.ru</a></div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.09);padding-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span style="font-size:11.5px;color:rgba(255,255,255,.35);">Политика конфиденциальности</span>
+      <span style="font-size:11.5px;color:rgba(255,255,255,.35);">ул. Большая Почтовая, 26В строение 2</span>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    if (toggle && nav) {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

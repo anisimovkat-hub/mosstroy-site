@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 86px; overflow-x: hidden; }
+  body { margin: 0; padding-top: 72px; overflow-x: hidden; font-family: 'Inter', Arial, sans-serif; color: #142033; background: #f4f8fb; -webkit-font-smoothing: antialiased; }
+  x-dc { display: block; }
+  h1, h2, h3, h4, p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select, textarea { font: inherit; }
+  #menuToggle { display: none !important; }
+  .services-hero { position: relative; min-height: 440px; display: flex; flex-direction: column; overflow: hidden; background: #0d2240; }
+  .services-hero-photo { position: absolute; right: 0; top: 0; width: 64%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .services-hero-blend { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(92deg, #0a1e3c 0%, #0d2240 31%, rgba(13,34,64,.95) 42%, rgba(13,34,64,.74) 53%, rgba(13,34,64,.36) 66%, rgba(13,34,64,.08) 82%, rgba(13,34,64,0) 100%); }
+  .services-hero-content { position: relative; z-index: 2; width: min(1240px, calc(100% - 48px)); margin: 0 auto; padding: 68px 0 36px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .services-hero-title { font-size: clamp(44px, 6.5vw, 76px); font-weight: 800; line-height: .92; color: #fff; letter-spacing: -.01em; margin-bottom: 16px; max-width: 520px; text-shadow: 0 2px 18px rgba(0,0,0,.28); }
+  .services-hero-lead { font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.82); margin-bottom: 26px; max-width: 470px; }
+  .services-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .svc-card { transition: box-shadow .18s, transform .18s; }
+  .svc-card[data-project-work] { cursor: pointer; }
+  .svc-card:hover { box-shadow: 0 6px 28px rgba(14,61,114,.14) !important; transform: translateY(-2px); }
+  .svc-main-grid > .svc-card:not(.svc-feature-card) {
+    display: grid !important;
+    grid-template-rows: 178px 150px 50px;
+    height: 378px;
+  }
+  .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(1) {
+    padding: 18px 22px 12px !important;
+    overflow: hidden;
+  }
+  .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(1) h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(1) p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(2) {
+    height: 150px !important;
+  }
+  .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(3) {
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    padding: 0 22px !important;
+  }
+  .svc-feature-card {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 38%) !important;
+    grid-template-rows: 1fr auto !important;
+    min-height: 260px;
+  }
+  .svc-feature-text { grid-column: 1; grid-row: 1; }
+  .svc-feature-media { grid-column: 2; grid-row: 1 / span 2; height: 100% !important; min-height: 260px; }
+  .svc-feature-link { grid-column: 1; grid-row: 2; }
+  .cta-photo { position: absolute; right: 0; top: 0; width: 48%; height: 100%; object-fit: cover; object-position: center; opacity: .72; }
+  .cta-photo-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, #0d2240 0%, rgba(13,34,64,.96) 40%, rgba(13,34,64,.66) 58%, rgba(13,34,64,.18) 100%); pointer-events: none; }
+  .contacts-compact-grid { display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start; }
+  .contacts-info-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px; }
+  .contacts-tender { border-left:1px solid #e6eff6;padding-left:28px; }
+  @media (max-width: 920px) {
+    #menuToggle { display: flex !important; }
+    #mainNav { display: none !important; position: absolute; top: 62px; right: 0; left: auto; width: min(282px, calc(100vw - 48px)); flex-direction: column; gap: 2px; padding: 8px; background: rgba(255,255,255,.96); border: 1px solid #d4e0ea; border-radius: 14px; box-shadow: 0 18px 45px rgba(13,34,64,.18); z-index: 99; backdrop-filter: blur(18px); }
+    #mainNav.open { display: flex !important; }
+    #mainNav a { padding: 13px 14px !important; border-bottom: 0 !important; border-radius: 10px; color: #142033 !important; }
+    #mainNav a:hover { background: #eef6fa; }
+    #mainNav a span { display: none !important; }
+    #navEmail { display: none !important; }
+  }
+  @media (max-width: 900px) {
+    .svc-main-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .svc-main-grid article[style*="span 2"] { grid-column: span 2 !important; }
+    .footer-cols { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 600px) {
+    .svc-main-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+    .svc-main-grid article[style*="span 2"] { grid-column: span 2 !important; }
+    .cta-inner { flex-direction: column !important; align-items: flex-start !important; }
+    .hero-stats-row { grid-template-columns: repeat(3, 1fr) !important; }
+    .services-hero { min-height: 0 !important; }
+    .services-hero-photo { left: 0 !important; right: auto !important; width: 100% !important; height: 72% !important; object-position: center top !important; }
+    .services-hero-blend { background: linear-gradient(180deg, rgba(13,34,64,.32) 0%, rgba(13,34,64,.42) 26%, rgba(13,34,64,.62) 44%, rgba(13,34,64,.86) 62%, #0d2240 84%, #0d2240 100%) !important; }
+    .services-hero-content { width: min(100% - 48px, 520px) !important; padding: clamp(300px, 46vh, 410px) 0 32px !important; justify-content: flex-end !important; }
+    .services-hero-title { font-size: clamp(36px, 11vw, 48px) !important; line-height: 1.02 !important; max-width: 360px !important; margin-bottom: 14px !important; }
+    .services-hero-lead { font-size: 16px !important; line-height: 1.55 !important; max-width: 360px !important; margin-bottom: 22px !important; color: rgba(255,255,255,.86) !important; }
+    .services-hero-actions { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
+    .services-hero-actions a { width: 100%; justify-content: center; padding: 14px 18px !important; }
+    .hero-stats-row > div { padding: 10px 6px !important; gap: 5px !important; justify-content: center !important; }
+    .hero-stats-row svg { width: 19px !important; height: 19px !important; flex-shrink: 0 !important; }
+    .hero-stats-row strong { font-size: 16px !important; }
+    .hero-stats-row span { font-size: 8.5px !important; line-height: 1.15 !important; margin-top: 2px !important; }
+    .svc-feature-card { display: grid !important; grid-template-columns: minmax(0,1fr) minmax(120px,38%) !important; min-height: 220px !important; }
+    .svc-feature-media { height: 100% !important; min-height: 220px !important; }
+    .additional-services-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .additional-services-grid .svc-feature-card { grid-column: 1 / -1 !important; grid-template-columns: minmax(0,1fr) minmax(128px,40%) !important; grid-template-rows: 1fr auto !important; min-height: 270px !important; width: 100% !important; }
+    .additional-services-grid .svc-feature-text { padding: 18px 16px 10px !important; }
+    .additional-services-grid .svc-feature-text h3 { font-size: 18px !important; line-height: 1.16 !important; margin-bottom: 10px !important; }
+    .additional-services-grid .svc-feature-text p { font-size: 12.5px !important; line-height: 1.45 !important; }
+    .additional-services-grid .svc-feature-media { min-height: 270px !important; height: 100% !important; }
+    .additional-services-grid .svc-feature-link { padding: 10px 16px 14px !important; }
+    .additional-services-grid .svc-feature-link a { font-size: 12px !important; line-height: 1.25 !important; }
+    .svc-main-grid > .svc-card:not(.svc-feature-card) { grid-template-rows: 142px 118px 44px !important; height: 304px !important; border-radius: 10px !important; }
+    .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(1) { padding: 14px 12px 10px !important; }
+    .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(1) h3 { font-size: 15px !important; line-height: 1.18 !important; -webkit-line-clamp: 3 !important; }
+    .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(1) p { font-size: 12px !important; line-height: 1.35 !important; -webkit-line-clamp: 3 !important; }
+    .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(2) { height: 118px !important; }
+    .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(3) { min-height: 44px !important; padding: 0 12px !important; }
+    .svc-main-grid > .svc-card:not(.svc-feature-card) > div:nth-of-type(3) a { font-size: 11.5px !important; }
+    .cta-photo { width: 100% !important; height: 48% !important; opacity: .45 !important; }
+    .cta-photo-overlay { background: linear-gradient(180deg, rgba(13,34,64,.2) 0%, rgba(13,34,64,.82) 46%, #0d2240 100%) !important; }
+    .contacts-compact-grid { grid-template-columns: 1fr !important; gap: 22px !important; }
+    .contacts-info-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .contacts-tender { border-left: 0 !important; border-top: 1px solid #e6eff6 !important; padding-left: 0 !important; padding-top: 20px !important; }
+  }
+
+  @media (max-width: 480px) {
+    header > div { width: calc(100% - 24px) !important; gap: 8px !important; min-height: 64px !important; }
+    header a[href="Главная.dc.html"] { gap: 8px !important; min-width: 0 !important; }
+    header a[href="Главная.dc.html"] > div:first-child { width: 34px !important; height: 40px !important; padding-bottom: 5px !important; flex-shrink: 0 !important; }
+    header a[href="Главная.dc.html"] > div:last-child > div:first-child { font-size: 14px !important; letter-spacing: .035em !important; }
+    header a[href="Главная.dc.html"] > div:last-child > div:last-child { display: none !important; }
+    header > div > div:last-child { gap: 7px !important; }
+    header > div > div:last-child > a[href="#contacts"], #navPhone { padding: 8px 9px !important; font-size: 12px !important; border-radius: 7px !important; }
+    #menuToggle { width: 36px !important; height: 36px !important; border-radius: 7px !important; }
+  }
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,251,253,.96);border-bottom:1px solid rgba(212,224,234,.8);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);">
+  <div style="width:min(1360px,calc(100% - 48px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:24px;position:relative;">
+    <a href="Главная.dc.html" style="display:flex;align-items:center;gap:11px;flex-shrink:0;">
+      <div style="width:40px;height:46px;border-radius:5px;background:linear-gradient(180deg,#254e7c,#0d2240);display:grid;place-items:end center;padding-bottom:5px;">
+        <svg width="24" height="30" viewBox="0 0 26 32" fill="none"><path d="M0 32V12L5 9V32H8V2.5L13 0L18 2.5V32H21V9L26 12V32Z" fill="rgba(255,255,255,.92)"/></svg>
+      </div>
+      <div>
+        <div style="font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#0d2240;line-height:1.1;">МОССТРОЙ</div>
+        <div style="font-size:8.5px;color:#8097aa;text-transform:uppercase;letter-spacing:.09em;margin-top:2px;">строительное объединение</div>
+      </div>
+    </a>
+    <nav id="mainNav" style="display:flex;align-items:center;gap:14px;font-size:13.5px;font-weight:500;">
+      <a href="Главная.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">О компании</a>
+      <a href="Услуги.dc.html" style="color:#103f72;padding:22px 10px 18px;position:relative;white-space:nowrap;">Услуги<span style="position:absolute;bottom:12px;left:10px;right:10px;height:2px;background:#4ab8c8;border-radius:1px;display:block;"></span></a>
+      <a href="Проекты.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Проекты</a>
+      <a href="Технологии.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Технологии и качество</a>
+      <a href="Главная.dc.html#contacts" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Контакты</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;margin-left:auto;">
+      <a id="navPhone" href="tel:+79160409065" style="padding:9px 12px;border:1px solid #d4e0ea;border-radius:7px;background:#fff;font-size:13.5px;font-weight:700;color:#142033;white-space:nowrap;">+7 (916) 040-90-65</a>
+      <a id="navEmail" href="mailto:real.stroy.real@yandex.ru" style="padding:9px 12px;border:1px solid #d4e0ea;border-radius:7px;background:#fff;font-size:13.5px;font-weight:700;color:#103f72;white-space:nowrap;">real.stroy.real@yandex.ru</a>
+      <button id="menuToggle" aria-label="Меню" style="width:38px;height:38px;border:1px solid #d4e0ea;border-radius:7px;background:#fff;cursor:pointer;align-items:center;justify-content:center;">
+        <svg width="17" height="13" viewBox="0 0 18 14" fill="none"><path d="M0 1h18M0 7h18M0 13h18" stroke="#142033" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="services-hero">
+  <img class="services-hero-photo" src="./photo-services.png" alt="Строительные услуги компании" decoding="async">
+  <div class="services-hero-blend"></div>
+  <!-- Building SVG (same style as Главная) -->
+  <svg style="display:none" viewBox="0 0 640 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2a6090" stop-opacity=".95"/><stop offset="50%" stop-color="#4888b8" stop-opacity=".88"/><stop offset="100%" stop-color="#3070a0" stop-opacity=".82"/></linearGradient>
+      <linearGradient id="sg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,.22)"/><stop offset="100%" stop-color="rgba(255,255,255,.04)"/></linearGradient>
+      <linearGradient id="lf2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0d2240" stop-opacity="1"/><stop offset="50%" stop-color="#0d2240" stop-opacity="0"/></linearGradient>
+    </defs>
+    <rect x="270" y="20" width="70" height="420" rx="2" fill="url(#sg2)"/><rect x="270" y="20" width="70" height="420" fill="url(#sg3)"/>
+    <line x1="270" y1="20" x2="270" y2="440" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+    <line x1="287" y1="20" x2="287" y2="440" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+    <line x1="304" y1="20" x2="304" y2="440" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+    <line x1="321" y1="20" x2="321" y2="440" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+    <line x1="340" y1="20" x2="340" y2="440" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+    <line x1="270" y1="65" x2="340" y2="65" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="270" y1="105" x2="340" y2="105" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="270" y1="145" x2="340" y2="145" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="270" y1="185" x2="340" y2="185" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="270" y1="225" x2="340" y2="225" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <polygon points="305,5 299,20 311,20" fill="#3878a8"/>
+    <rect x="360" y="70" width="56" height="370" rx="2" fill="#1e5280" opacity=".9"/><rect x="360" y="70" width="56" height="370" fill="url(#sg3)"/>
+    <line x1="374" y1="70" x2="374" y2="440" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+    <line x1="388" y1="70" x2="388" y2="440" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+    <line x1="402" y1="70" x2="402" y2="440" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+    <line x1="416" y1="70" x2="416" y2="440" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+    <polygon points="388,55 383,70 393,70" fill="#2a5e88"/>
+    <rect x="440" y="130" width="78" height="310" rx="2" fill="#2d6898" opacity=".85"/><rect x="440" y="130" width="78" height="310" fill="url(#sg3)"/>
+    <line x1="458" y1="130" x2="458" y2="440" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="476" y1="130" x2="476" y2="440" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="494" y1="130" x2="494" y2="440" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="512" y1="130" x2="512" y2="440" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <rect x="204" y="100" width="52" height="340" rx="2" fill="#1e4e7a" opacity=".82"/><rect x="204" y="100" width="52" height="340" fill="url(#sg3)"/>
+    <line x1="218" y1="100" x2="218" y2="440" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="232" y1="100" x2="232" y2="440" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <line x1="246" y1="100" x2="246" y2="440" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <!-- Cranes -->
+    <line x1="540" y1="440" x2="540" y2="60" stroke="rgba(255,255,255,.32)" stroke-width="1.8"/>
+    <line x1="540" y1="60" x2="600" y2="72" stroke="rgba(255,255,255,.28)" stroke-width="1.4"/>
+    <line x1="540" y1="60" x2="488" y2="72" stroke="rgba(255,255,255,.22)" stroke-width="1.4"/>
+    <line x1="580" y1="72" x2="580" y2="108" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="150" y1="440" x2="150" y2="80" stroke="rgba(255,255,255,.25)" stroke-width="1.6"/>
+    <line x1="150" y1="80" x2="200" y2="90" stroke="rgba(255,255,255,.22)" stroke-width="1.2"/>
+    <line x1="150" y1="80" x2="108" y2="90" stroke="rgba(255,255,255,.18)" stroke-width="1.2"/>
+    <rect x="140" y="250" width="50" height="190" rx="1" fill="#1a406a" opacity=".65"/>
+    <rect x="560" y="270" width="48" height="170" rx="1" fill="#1a3e62" opacity=".6"/>
+    <rect x="130" y="420" width="380" height="20" rx="0" fill="#0d2240" opacity=".55"/>
+    <rect x="130" y="420" width="380" height="20" fill="url(#sg3)" opacity=".1"/>
+    <rect x="0" y="0" width="300" height="440" fill="url(#lf2)"/>
+  </svg>
+
+  <div class="services-hero-content">
+      <h1 class="services-hero-title">Строительные услуги</h1>
+      <p class="services-hero-lead">Строительные, отделочные, инженерные и дополнительные работы для объектов в Москве и Московской области.</p>
+      <div class="services-hero-actions">
+        <a href="#contacts" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#4ab8c8;color:#fff;border-radius:8px;font-weight:700;font-size:14.5px;box-shadow:0 4px 18px rgba(74,184,200,.35);">Связаться <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="5 12 19 12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        <a href="#contacts" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:rgba(255,255,255,.13);color:#fff;border-radius:8px;font-weight:600;font-size:14.5px;border:1.5px solid rgba(255,255,255,.38);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);">Получить консультацию <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="5 12 19 12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+      </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="hero-stats-row" style="position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.12);background:rgba(7,20,40,.52);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);">
+    <div style="padding:16px 28px;border-right:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:12px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(74,184,200,.75)" stroke-width="1.4"><path d="M3 21V6l9-4 9 4v15"/><rect x="9" y="12" width="6" height="9"/></svg>
+      <div><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">17+</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">реализованных объектов</span></div>
+    </div>
+    <div style="padding:16px 28px;border-right:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:12px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(74,184,200,.75)" stroke-width="1.4"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8v4h8z"/></svg>
+      <div><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">с 2021</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">года на рынке</span></div>
+    </div>
+    <div style="padding:16px 28px;display:flex;align-items:center;gap:12px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(74,184,200,.75)" stroke-width="1.4"><polygon points="12 2 2 7 12 12 22 7"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <div><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">14+</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">направлений услуг</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN SERVICES GRID -->
+<section style="padding:34px 0 16px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:26px;">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ab8c8;box-shadow:0 0 0 4px rgba(74,184,200,.18);flex-shrink:0;"></span>
+      <h2 style="font-size:20px;font-weight:700;color:#142033;">Наши услуги</h2>
+    </div>
+
+    <div id="svcGrid" class="svc-main-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+
+      <!-- 1. МОНОЛИТНЫЕ — WIDE (span 2) -->
+      <article data-category="monolith" class="svc-card svc-feature-card" style="grid-column:span 2;border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;">
+        <div class="svc-feature-text" style="padding:22px 24px 14px;">
+          <h3 style="font-size:20px;font-weight:800;color:#142033;margin-bottom:10px;line-height:1.2;">Монолитные конструкции</h3>
+          <p style="font-size:13.5px;color:#627486;line-height:1.65;max-width:520px;">Опалубочные работы, армирование и бетонирование стен, колонн, перекрытий, шахт и лестниц. Виброуплотнение, уход за бетоном, противоморозные мероприятия. Контроль качества, отбор образцов, исполнительная документация.</p>
+        </div>
+        <!-- Photo area -->
+        <div class="svc-feature-media" style="position:relative;overflow:hidden;">
+          <img src="./svc-01-monolith.png" alt="Монолитные конструкции на строительной площадке" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.4) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg style="display:none" viewBox="0 0 580 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Formwork panels -->
+            <rect x="20" y="20" width="100" height="110" rx="2" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+            <rect x="130" y="20" width="100" height="110" rx="2" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+            <rect x="240" y="20" width="100" height="110" rx="2" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+            <!-- Rebar lines inside -->
+            <line x1="40" y1="50" x2="210" y2="50" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/>
+            <line x1="40" y1="80" x2="210" y2="80" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/>
+            <line x1="40" y1="110" x2="210" y2="110" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/>
+            <line x1="70" y1="25" x2="70" y2="125" stroke="rgba(255,255,255,.3)" stroke-width="2.5"/>
+            <line x1="110" y1="25" x2="110" y2="125" stroke="rgba(255,255,255,.3)" stroke-width="2.5"/>
+            <line x1="150" y1="25" x2="150" y2="125" stroke="rgba(255,255,255,.3)" stroke-width="2.5"/>
+            <line x1="190" y1="25" x2="190" y2="125" stroke="rgba(255,255,255,.3)" stroke-width="2.5"/>
+            <!-- Tie wires -->
+            <circle cx="70" cy="50" r="3" fill="rgba(255,255,255,.5)"/>
+            <circle cx="110" cy="50" r="3" fill="rgba(255,255,255,.5)"/>
+            <circle cx="150" cy="50" r="3" fill="rgba(255,255,255,.5)"/>
+            <circle cx="70" cy="80" r="3" fill="rgba(255,255,255,.5)"/>
+            <circle cx="110" cy="80" r="3" fill="rgba(255,255,255,.5)"/>
+            <circle cx="150" cy="80" r="3" fill="rgba(255,255,255,.5)"/>
+            <!-- Crane at right -->
+            <line x1="490" y1="150" x2="490" y2="10" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+            <line x1="490" y1="10" x2="560" y2="20" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <line x1="490" y1="10" x2="430" y2="20" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+            <line x1="540" y1="20" x2="540" y2="55" stroke="rgba(255,255,255,.22)" stroke-width="1" stroke-dasharray="3,3"/>
+            <!-- Concrete pour -->
+            <ellipse cx="300" cy="95" rx="50" ry="18" fill="rgba(255,255,255,.14)"/>
+            <text x="300" y="100" fill="rgba(255,255,255,.4)" font-size="9" text-anchor="middle" font-family="Inter, sans-serif" letter-spacing="1">БЕТОН</text>
+          </svg>
+        </div>
+        <div class="svc-feature-link" style="padding:12px 24px 18px;border-top:1px solid #f0f6fa;">
+          <a href="Проекты.dc.html" style="font-size:13.5px;font-weight:700;color:#103f72;display:flex;align-items:center;gap:5px;">Проекты по услуге <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="5 12 19 12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        </div>
+      </article>
+
+      <!-- 2. Отделка МОП -->
+      <article data-category="finishing" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Отделка МОП<br>и техпомещений</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Стены, потолки, полы мест общего пользования. Штукатурка, окраска, плитка, наливные полы.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-02-mop.png" alt="Отделка мест общего пользования" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><rect x="20" y="20" width="55" height="55" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="80" y="20" width="55" height="55" rx="1" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="140" y="20" width="55" height="55" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="200" y="20" width="60" height="55" rx="1" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="20" y="80" width="55" height="32" rx="1" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.22)" stroke-width="1"/><rect x="80" y="80" width="55" height="32" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.28)" stroke-width="1"/><rect x="140" y="80" width="55" height="32" rx="1" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.22)" stroke-width="1"/><rect x="200" y="80" width="60" height="32" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.28)" stroke-width="1"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 3. Отделка квартир -->
+      <article data-category="finishing" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Отделка квартир:<br>черновая и чистовая</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Стяжки, штукатурка, перегородки, покраска, обои, полы, двери, сантехника.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-03-apartments.png" alt="Черновая и чистовая отделка квартиры" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><rect x="20" y="15" width="240" height="95" rx="2" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.22)" stroke-width="1"/><rect x="30" y="25" width="80" height="60" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.28)" stroke-width="1"/><line x1="30" y1="55" x2="110" y2="55" stroke="rgba(255,255,255,.2)" stroke-width="1"/><line x1="70" y1="25" x2="70" y2="85" stroke="rgba(255,255,255,.2)" stroke-width="1"/><rect x="130" y="40" width="40" height="55" rx="1" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.32)" stroke-width="1.5"/><circle cx="166" cy="67" r="3" fill="rgba(255,255,255,.5)"/><rect x="185" y="25" width="65" height="45" rx="1" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><line x1="185" y1="47" x2="250" y2="47" stroke="rgba(255,255,255,.18)" stroke-width="1"/><line x1="217" y1="25" x2="217" y2="70" stroke="rgba(255,255,255,.18)" stroke-width="1"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 4. Инженерные сети -->
+      <article data-category="engineering" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Инженерные сети<br>ХВС/ГВС, пожаротушение</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Водоснабжение, канализация, отопление, пожарный водопровод, пусконаладка.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-04-pipes.png" alt="Монтаж инженерных сетей ХВС, ГВС и пожаротушения" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><line x1="20" y1="40" x2="260" y2="40" stroke="rgba(255,255,255,.38)" stroke-width="3"/><line x1="20" y1="80" x2="260" y2="80" stroke="rgba(255,255,255,.3)" stroke-width="2.5"/><line x1="80" y1="10" x2="80" y2="115" stroke="rgba(255,255,255,.32)" stroke-width="2.5"/><line x1="140" y1="10" x2="140" y2="115" stroke="rgba(255,255,255,.32)" stroke-width="2.5"/><line x1="200" y1="10" x2="200" y2="115" stroke="rgba(255,255,255,.28)" stroke-width="2.5"/><circle cx="80" cy="40" r="5" fill="rgba(255,255,255,.55)" stroke="rgba(255,255,255,.8)" stroke-width="1.5"/><circle cx="140" cy="40" r="5" fill="rgba(255,255,255,.55)" stroke="rgba(255,255,255,.8)" stroke-width="1.5"/><circle cx="80" cy="80" r="5" fill="rgba(255,255,255,.55)" stroke="rgba(255,255,255,.8)" stroke-width="1.5"/><circle cx="200" cy="80" r="5" fill="rgba(255,255,255,.55)" stroke="rgba(255,255,255,.8)" stroke-width="1.5"/><circle cx="200" cy="40" r="5" fill="rgba(255,255,255,.45)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><rect x="120" y="30" width="40" height="20" rx="3" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.35)" stroke-width="1"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 5. Кладка стен -->
+      <article data-category="masonry" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Кладка стен<br>и перегородок</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Кирпич, газо- и керамзитоблоки, монтаж ЖБ и металлических перемычек, армирование.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-05-masonry.png" alt="Кладка стен и перегородок из блоков" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><rect x="10" y="10" width="55" height="24" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="70" y="10" width="55" height="24" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="130" y="10" width="55" height="24" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="190" y="10" width="80" height="24" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="10" y="38" width="80" height="24" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="95" y="38" width="55" height="24" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="155" y="38" width="55" height="24" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="215" y="38" width="55" height="24" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="10" y="66" width="55" height="24" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="70" y="66" width="55" height="24" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="130" y="66" width="55" height="24" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="190" y="66" width="80" height="24" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="10" y="94" width="80" height="24" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.22)" stroke-width="1"/><rect x="95" y="94" width="55" height="24" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.28)" stroke-width="1"/><rect x="155" y="94" width="115" height="24" rx="1" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.22)" stroke-width="1"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 6. Перегородки ПГП -->
+      <article data-category="masonry" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Перегородки<br>из ПГП</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Пазогребневые плиты, звукоизоляционные прокладки, устройство дверных проёмов, шпатлевание.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-06-pgp.png" alt="Монтаж перегородок из пазогребневых плит" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><line x1="140" y1="5" x2="140" y2="120" stroke="rgba(255,255,255,.42)" stroke-width="5"/><rect x="20" y="15" width="100" height="30" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="20" y="50" width="100" height="30" rx="1" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="20" y="85" width="100" height="30" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="160" y="15" width="100" height="30" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="160" y="50" width="100" height="30" rx="1" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><rect x="160" y="85" width="100" height="30" rx="1" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 7. Гидроизоляция фундамента -->
+      <article data-category="waterproofing" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Вертикальная гидроизоляция<br>фундамента</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Обмазочная, оклеечная и мембранная изоляция. Гидрошпонки, дренаж, обратная засыпка.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-07-foundation.png" alt="Вертикальная гидроизоляция фундамента" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 52%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><rect x="10" y="50" width="260" height="70" rx="1" fill="rgba(0,0,0,.22)"/><rect x="20" y="40" width="240" height="18" rx="1" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><rect x="20" y="60" width="240" height="12" rx="0" fill="rgba(255,255,255,.14)"/><rect x="20" y="74" width="240" height="8" rx="0" fill="rgba(255,255,255,.1)"/><line x1="10" y1="40" x2="270" y2="40" stroke="rgba(255,255,255,.5)" stroke-width="2.5"/><line x1="10" y1="60" x2="270" y2="60" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/><line x1="10" y1="74" x2="270" y2="74" stroke="rgba(255,255,255,.25)" stroke-width="1"/><path d="M15 95 Q40 85 65 95 Q90 105 115 95 Q140 85 165 95 Q190 105 215 95 Q240 85 265 95" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="none"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 8. Отделка техпомещений -->
+      <article data-category="finishing" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Отделка электрощитовых,<br>венткамер, подвалов</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Эпоксидные полы, износостойкие краски, огнестойкие проходки, маркировка зон.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-08-techrooms.png" alt="Отделка электрощитовой и технических помещений" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><rect x="30" y="15" width="70" height="95" rx="2" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><rect x="38" y="23" width="54" height="38" rx="1" fill="rgba(255,255,255,.18)"/><circle cx="48" cy="35" r="4" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/><circle cx="62" cy="35" r="4" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/><circle cx="76" cy="35" r="4" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/><line x1="38" y1="45" x2="92" y2="45" stroke="rgba(255,255,255,.3)" stroke-width="1"/><line x1="38" y1="50" x2="92" y2="50" stroke="rgba(255,255,255,.2)" stroke-width="1"/><line x1="38" y1="55" x2="92" y2="55" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="130" y="20" width="120" height="85" rx="2" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/><line x1="130" y1="50" x2="250" y2="50" stroke="rgba(255,255,255,.18)" stroke-width="1"/><line x1="130" y1="70" x2="250" y2="70" stroke="rgba(255,255,255,.18)" stroke-width="1"/><line x1="190" y1="20" x2="190" y2="105" stroke="rgba(255,255,255,.15)" stroke-width="1"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 9. Гидроизоляция кровли -->
+      <article data-category="waterproofing" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Гидроизоляция<br>и «пирог» кровли</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">ПВХ/ТПО/битумные мембраны, пароизоляция, утеплитель, примыкания, испытание проливом.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-09-roof.png" alt="Устройство гидроизоляции и кровельного пирога" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><path d="M10 95 H270 V105 H10 Z" fill="rgba(255,255,255,.12)"/><path d="M10 82 H270 V92 H10 Z" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1"/><path d="M10 70 H270 V80 H10 Z" fill="rgba(255,255,255,.1)"/><path d="M10 55 H270 V68 H10 Z" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.25)" stroke-width="1"/><path d="M10 40 H270 V53 H10 Z" fill="rgba(255,255,255,.08)"/><polygon points="10,40 140,10 270,40" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/><circle cx="55" cy="68" r="4" fill="rgba(255,255,255,.5)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><circle cx="200" cy="68" r="4" fill="rgba(255,255,255,.5)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 10. Дверные блоки и люки -->
+      <article data-category="doors" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Установка дверных<br>блоков и люков</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Противопожарные и стандартные блоки. Монтаж коробок, полотен, люков, регулировка.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-10-doors.png" alt="Установка дверных блоков и люков на строительном объекте" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 52%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><rect x="80" y="10" width="120" height="110" rx="3" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/><rect x="90" y="20" width="100" height="90" rx="2" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><line x1="140" y1="20" x2="140" y2="110" stroke="rgba(255,255,255,.2)" stroke-width="1"/><circle cx="120" cy="65" r="5" fill="rgba(255,255,255,.5)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><circle cx="160" cy="65" r="5" fill="rgba(255,255,255,.5)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><rect x="220" y="25" width="40" height="75" rx="2" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.2)" stroke-width="1"/><rect x="225" y="30" width="30" height="30" rx="1" fill="rgba(255,255,255,.15)"/><rect x="225" y="65" width="30" height="30" rx="1" fill="rgba(255,255,255,.12)"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+      <!-- 11. Земляные работы -->
+      <article data-category="earthworks" class="svc-card" style="border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:18px 22px 12px;flex:1;">
+          <h3 style="font-size:16px;font-weight:700;color:#142033;margin-bottom:8px;line-height:1.25;">Земляные работы</h3>
+          <p style="font-size:13px;color:#627486;line-height:1.6;">Разработка котлованов, крепление откосов, водоотлив, обратная засыпка с уплотнением.</p>
+        </div>
+        <div style="height:132px;position:relative;overflow:hidden;">
+          <img src="./svc-11-earthworks.png" alt="Земляные работы и разработка котлована" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 46%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 280 125" fill="none"><path d="M10 50 Q70 30 140 35 Q210 40 270 50 L270 115 L10 115 Z" fill="rgba(0,0,0,.25)"/><path d="M10 50 Q70 30 140 35 Q210 40 270 50" stroke="rgba(255,255,255,.4)" stroke-width="2.5" fill="none"/><path d="M10 65 Q70 50 140 55 Q210 58 270 65" stroke="rgba(255,255,255,.22)" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/><path d="M10 80 Q70 68 140 72 Q210 76 270 80" stroke="rgba(255,255,255,.15)" stroke-width="1" fill="none" stroke-dasharray="5,5"/><rect x="200" y="20" width="55" height="35" rx="3" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/><line x1="200" y1="38" x2="255" y2="38" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><path d="M240 20 L255 10 L258 18 Z" fill="rgba(255,255,255,.28)"/><line x1="255" y1="10" x2="255" y2="22" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="Проекты.dc.html" style="font-size:13px;font-weight:600;color:#103f72;">Проекты по услуге →</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ADDITIONAL SERVICES -->
+<section style="padding:20px 0 48px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:22px;">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ab8c8;box-shadow:0 0 0 4px rgba(74,184,200,.18);flex-shrink:0;"></span>
+      <h2 style="font-size:18px;font-weight:700;color:#142033;">Дополнительные услуги</h2>
+    </div>
+    <div class="additional-services-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+
+      <!-- Поставка материалов -->
+      <article data-category="additional" class="svc-card svc-feature-card" style="grid-column:span 2;border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;">
+        <div class="svc-feature-text" style="padding:22px 24px 14px;">
+          <h3 style="font-size:19px;font-weight:800;color:#142033;margin-bottom:10px;line-height:1.2;">Поставка строительных материалов</h3>
+          <p style="font-size:13.5px;color:#627486;line-height:1.65;max-width:480px;">Прямые поставки от заводов-производителей: бетон, арматура, кирпич, газоблоки, сухие смеси, утеплители, кровельные и отделочные материалы, инженерные материалы. Поузловая комплектация, графики JIT, контроль качества и сертификаты.</p>
+        </div>
+        <div class="svc-feature-media" style="position:relative;overflow:hidden;">
+          <img src="./svc-12-supply.png" alt="Поставка строительных материалов на объект" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 580 130" fill="none"><rect x="20" y="30" width="80" height="60" rx="2" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/><rect x="30" y="55" width="60" height="30" rx="1" fill="rgba(255,255,255,.1)"/><rect x="120" y="20" width="80" height="70" rx="2" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><rect x="220" y="35" width="80" height="55" rx="2" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/><line x1="100" y1="80" x2="220" y2="80" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="5,4"/><line x1="300" y1="80" x2="420" y2="80" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="5,4"/><rect x="340" y="25" width="90" height="65" rx="2" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><rect x="450" y="35" width="110" height="55" rx="2" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/><circle cx="155" cy="80" r="12" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/><circle cx="310" cy="80" r="12" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/><circle cx="430" cy="80" r="12" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/></svg>
+        </div>
+        <div class="svc-feature-link" style="padding:12px 24px 18px;border-top:1px solid #f0f6fa;"><a href="#contacts" style="font-size:13.5px;font-weight:700;color:#103f72;">Запросить номенклатуру →</a></div>
+      </article>
+
+      <!-- Аренда спецтехники -->
+      <article data-category="additional" class="svc-card svc-feature-card" style="grid-column:span 2;border:1px solid #dce8f2;border-radius:12px;background:#fff;box-shadow:0 2px 16px rgba(14,61,114,.08);overflow:hidden;">
+        <div class="svc-feature-text" style="padding:22px 24px 14px;">
+          <h3 style="font-size:19px;font-weight:800;color:#142033;margin-bottom:10px;line-height:1.2;">Аренда спецтехники</h3>
+          <p style="font-size:13.5px;color:#627486;line-height:1.65;max-width:480px;">Собственный и партнёрский парк техники: автомобильные краны 25–100 т, манипуляторы, экскаваторы, бульдозеры, самосвалы. Операторы в штате, выезд по Москве и МО. Партнёрство с АС-групп.</p>
+        </div>
+        <div class="svc-feature-media" style="position:relative;overflow:hidden;">
+          <img src="./svc-13-equipment.png" alt="Аренда строительной спецтехники" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
+          <svg aria-hidden="true" style="display:none" viewBox="0 0 580 130" fill="none"><line x1="80" y1="130" x2="80" y2="20" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/><line x1="80" y1="20" x2="220" y2="28" stroke="rgba(255,255,255,.32)" stroke-width="2"/><line x1="80" y1="20" x2="30" y2="28" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/><line x1="190" y1="28" x2="190" y2="80" stroke="rgba(255,255,255,.22)" stroke-width="1.2" stroke-dasharray="4,3"/><rect x="70" y="80" width="50" height="30" rx="2" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><circle cx="82" cy="115" r="10" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/><circle cx="106" cy="115" r="10" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/><line x1="250" y1="130" x2="250" y2="50" stroke="rgba(255,255,255,.28)" stroke-width="2"/><line x1="250" y1="50" x2="370" y2="55" stroke="rgba(255,255,255,.25)" stroke-width="1.8"/><rect x="240" y="90" width="60" height="25" rx="2" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/><circle cx="252" cy="118" r="9" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"/><circle cx="276" cy="118" r="9" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"/><rect x="400" y="65" width="160" height="45" rx="3" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><line x1="400" y1="88" x2="560" y2="88" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/><circle cx="420" cy="112" r="10" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/><circle cx="450" cy="112" r="10" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/><circle cx="530" cy="112" r="10" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/><circle cx="558" cy="112" r="10" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/></svg>
+        </div>
+        <div class="svc-feature-link" style="padding:12px 24px 18px;border-top:1px solid #f0f6fa;"><a href="https://as-groupp.ru" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:8px;background:#103f72;color:#fff;font-size:13.5px;font-weight:700;">Арендовать спецтехнику →</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA DARK BAND -->
+<section style="padding:0 0 48px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div style="border-radius:14px;overflow:hidden;position:relative;background:linear-gradient(110deg,#0d2240 0%,#0f2d50 55%,#0d2240 100%);">
+      <img class="cta-photo" src="./photo-hero.png" alt="Строительный объект с башенными кранами" loading="lazy" decoding="async">
+      <div class="cta-photo-overlay"></div>
+      <div class="cta-inner" style="position:relative;z-index:1;display:flex;align-items:center;gap:36px;padding:44px 48px;flex-wrap:wrap;">
+        <div style="max-width:460px;">
+          <p style="font-size:10.5px;text-transform:uppercase;letter-spacing:.16em;color:#4ab8c8;font-weight:700;margin-bottom:12px;">О КОМПЛЕКСНЫЙ ПОДХОД</p>
+          <h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;color:#fff;margin-bottom:14px;line-height:1.15;">Реализуем проекты<br>под ключ</h2>
+          <p style="font-size:14.5px;color:rgba(255,255,255,.68);line-height:1.65;margin-bottom:24px;">Берём на себя все этапы — от проектирования до ввода в эксплуатацию и дальнейшего обслуживания.</p>
+          <div style="display:flex;gap:18px;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:9px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><span style="font-size:12px;color:rgba(255,255,255,.68);line-height:1.3;">Единая команда<br>и ответственность</span></div>
+            <div style="display:flex;align-items:center;gap:9px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span style="font-size:12px;color:rgba(255,255,255,.68);line-height:1.3;">Оптимизация сроков<br>и бюджета</span></div>
+            <div style="display:flex;align-items:center;gap:9px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="1.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round"/></svg></div><span style="font-size:12px;color:rgba(255,255,255,.68);line-height:1.3;">Контроль качества<br>на каждом этапе</span></div>
+            <div style="display:flex;align-items:center;gap:9px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="1.5"><path d="M12 2L4 6v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V6l-8-4z"/></svg></div><span style="font-size:12px;color:rgba(255,255,255,.68);line-height:1.3;">Гарантия надёжности<br>и безопасности</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" style="padding:0 0 48px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:16px;">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ab8c8;box-shadow:0 0 0 4px rgba(74,184,200,.18);flex-shrink:0;"></span>
+      <h2 style="font-size:clamp(22px,3vw,30px);font-weight:800;color:#142033;">Контакты</h2>
+    </div>
+    <div class="contacts-compact-grid" style="border:1px solid #dce8f2;border-radius:16px;background:#fff;padding:28px 32px;box-shadow:0 4px 24px rgba(14,61,114,.08);">
+      <div>
+        <div style="font-size:12px;color:#103f72;margin-bottom:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Общие контакты</div>
+        <div class="contacts-info-grid">
+          <div>
+            <div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">Телефон</div>
+            <a href="tel:+79160409065" style="font-size:17px;font-weight:800;color:#142033;line-height:1.35;">+7 (916) 040-90-65</a>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">E-mail</div>
+            <a href="mailto:real.stroy.real@yandex.ru" style="font-size:16px;font-weight:800;color:#142033;line-height:1.35;word-break:break-word;">real.stroy.real@yandex.ru</a>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">Адрес</div>
+            <div style="font-size:15px;font-weight:800;color:#142033;line-height:1.45;">ул. Большая Почтовая, 26В строение 2</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">График</div>
+            <div style="font-size:15px;font-weight:800;color:#142033;line-height:1.45;">Пн-Пт, 10:00-19:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="contacts-tender">
+        <div style="font-size:12px;color:#103f72;margin-bottom:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Тендерный отдел</div>
+        <div style="display:grid;gap:8px;">
+          <a href="tel:+79168801777" style="font-size:16px;font-weight:800;color:#103f72;">+7 (916) 880-17-77</a>
+          <a href="mailto:real.stroy.real@yandex.ru" style="font-size:16px;font-weight:800;color:#103f72;word-break:break-word;">real.stroy.real@yandex.ru</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0e1e30;padding:36px 0 24px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div class="footer-cols" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:28px;margin-bottom:28px;align-items:start;">
+      <div>
+        <a href="Главная.dc.html" style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+          <div style="width:36px;height:42px;border-radius:4px;background:rgba(255,255,255,.1);display:grid;place-items:end center;padding-bottom:5px;"><svg width="21" height="26" viewBox="0 0 26 32" fill="none"><path d="M0 32V12L5 9V32H8V2.5L13 0L18 2.5V32H21V9L26 12V32Z" fill="rgba(255,255,255,.78)"/></svg></div>
+          <div><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#fff;line-height:1.1;">МОССТРОЙ</div><div style="font-size:8.5px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">строительное объединение</div></div>
+        </a>
+        <p style="font-size:12px;color:rgba(255,255,255,.38);line-height:1.6;">© 2004–2026. Мосстрой.<br>Все права защищены.</p>
+      </div>
+      <div>
+        <div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">О компании</div>
+        <a href="Главная.dc.html#about" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">О нас</a>
+        <a href="Технологии.dc.html" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">Технологии и качество</a>
+      </div>
+      <div>
+        <div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">Услуги</div>
+        <a href="Услуги.dc.html" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">Все услуги</a>
+      </div>
+      <div>
+        <div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">Проекты</div>
+        <a href="Проекты.dc.html" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">Все проекты</a>
+      </div>
+      <div>
+        <div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">Контакты</div>
+        <a href="tel:+79160409065" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">+7 (916) 040-90-65</a>
+        <a href="mailto:real.stroy.real@yandex.ru" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">real.stroy.real@yandex.ru</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.09);padding-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span style="font-size:11.5px;color:rgba(255,255,255,.35);">Политика конфиденциальности</span>
+      <span style="font-size:11.5px;color:rgba(255,255,255,.35);">ул. Большая Почтовая, 26В строение 2</span>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    if (toggle && nav) {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    const serviceWorkMap = [
+      { test: /монолитные конструкции/i, work: 'monolith' },
+      { test: /отделка моп/i, work: 'mop' },
+      { test: /отделка квартир/i, work: 'apartments' },
+      { test: /инженерные сети/i, work: 'engineering' },
+      { test: /кладка стен/i, work: 'masonry' },
+      { test: /перегородки\s+из пгп/i, work: 'pgp' },
+      { test: /вертикальная гидроизоляция/i, work: 'foundation' },
+      { test: /отделка электрощитовых/i, work: 'techrooms' },
+      { test: /пирог.*кровли|гидроизоляция\s+и/i, work: 'roof' },
+      { test: /дверных\s+блоков/i, work: 'doors' },
+      { test: /земляные работы/i, work: 'earthworks' },
+      { test: /поставка строительных материалов/i, work: 'supply' },
+      { test: /аренда спецтехники/i, work: 'equipment' }
+    ];
+
+    document.querySelectorAll('.svc-card').forEach((card) => {
+      const title = card.querySelector('h3')?.textContent.replace(/\s+/g, ' ').trim() || '';
+      const match = serviceWorkMap.find((item) => item.test.test(title));
+      if (!match) return;
+
+      const url = `Проекты.dc.html?work=${encodeURIComponent(match.work)}#projectCards`;
+      card.dataset.projectWork = match.work;
+      card.setAttribute('role', 'link');
+      card.setAttribute('tabindex', '0');
+      card.querySelectorAll('a').forEach((link) => {
+        if (/^https?:\/\//i.test(link.getAttribute('href') || '')) return;
+        link.href = url;
+        if (/^Запросить/i.test(link.textContent.trim())) {
+          link.textContent = 'Проекты по услуге →';
+        }
+      });
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a')) return;
+        window.location.href = url;
+      });
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          window.location.href = url;
+        }
+      });
+    });
+
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
