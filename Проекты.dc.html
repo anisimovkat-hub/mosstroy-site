@@ -22,6 +22,9 @@
   #menuToggle { display: none !important; }
   .view-btn { cursor: pointer; transition: background .15s, color .15s; }
   .view-btn.active { background: rgba(74,184,200,.15) !important; color: #103f72 !important; border-color: rgba(74,184,200,.5) !important; }
+  .contacts-compact-grid { display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start; }
+  .contacts-info-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px; }
+  .contacts-tender { border-left:1px solid #e6eff6;padding-left:28px; }
 
   .cards-grid.is-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
   .cards-grid.is-list { grid-template-columns: 1fr !important; }
@@ -110,6 +113,9 @@
     .project-modal-grid { grid-template-columns: 1fr !important; }
     .project-modal-gallery { min-height: 320px !important; }
     .project-modal-facts { grid-template-columns: 1fr !important; }
+    .contacts-compact-grid { grid-template-columns: 1fr !important; gap: 22px !important; padding: 24px !important; }
+    .contacts-info-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .contacts-tender { border-left: 0 !important; border-top: 1px solid #e6eff6 !important; padding-left: 0 !important; padding-top: 20px !important; }
   }
 
   @media (max-width: 480px) {
@@ -596,6 +602,46 @@
       </div>
       <div id="projectsObjectsMap" class="object-map">
         <div class="object-map-fallback">Загрузка интерактивной карты объектов...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" style="padding:0 0 48px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:16px;">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ab8c8;box-shadow:0 0 0 4px rgba(74,184,200,.18);flex-shrink:0;"></span>
+      <h2 style="font-size:clamp(22px,3vw,30px);font-weight:800;color:#142033;">Контакты</h2>
+    </div>
+    <div class="contacts-compact-grid" style="border:1px solid #dce8f2;border-radius:16px;background:#fff;padding:28px 32px;box-shadow:0 4px 24px rgba(14,61,114,.08);">
+      <div>
+        <div style="font-size:12px;color:#103f72;margin-bottom:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Общие контакты</div>
+        <div class="contacts-info-grid">
+          <div>
+            <div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">Телефон</div>
+            <a href="tel:+79160409065" style="font-size:17px;font-weight:800;color:#142033;line-height:1.35;">+7 (916) 040-90-65</a>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">E-mail</div>
+            <a href="mailto:real.stroy.real@yandex.ru" style="font-size:16px;font-weight:800;color:#142033;line-height:1.35;word-break:break-word;">real.stroy.real@yandex.ru</a>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">Адрес</div>
+            <div style="font-size:15px;font-weight:800;color:#142033;line-height:1.45;">ул. Большая Почтовая, 26В строение 2</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#8097aa;margin-bottom:5px;font-weight:600;">График</div>
+            <div style="font-size:15px;font-weight:800;color:#142033;line-height:1.45;">Пн-Пт, 10:00-19:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="contacts-tender">
+        <div style="font-size:12px;color:#103f72;margin-bottom:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Тендерный отдел</div>
+        <div style="display:grid;gap:8px;">
+          <a href="tel:+79168801777" style="font-size:16px;font-weight:800;color:#103f72;">+7 (916) 880-17-77</a>
+          <a href="mailto:real.stroy.real@yandex.ru" style="font-size:16px;font-weight:800;color:#103f72;word-break:break-word;">real.stroy.real@yandex.ru</a>
+        </div>
       </div>
     </div>
   </div>
