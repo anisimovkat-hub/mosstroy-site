@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anisimovkat-hub.github.io/mosstroy-site/sitemap.xml

@@ -1,15 +1,164 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=404.dc.html">
-  <title>404 — страница не найдена | Мосстрой</title>
-  <script>
-    window.location.replace('404.dc.html');
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — страница не найдена | Мосстрой</title>
+<meta name="description" content="Страница не найдена. Перейдите на главную, к строительным услугам или реализованным проектам Мосстрой.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0d2240">
+<link rel="canonical" href="https://anisimovkat-hub.github.io/mosstroy-site/404.dc.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Мосстрой">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Страница не найдена — Мосстрой">
+<meta property="og:description" content="Перейдите на главную, к строительным услугам или реализованным проектам Мосстрой.">
+<meta property="og:url" content="https://anisimovkat-hub.github.io/mosstroy-site/404.dc.html">
+<meta property="og:image" content="https://anisimovkat-hub.github.io/mosstroy-site/photo-hero.png">
+<script src="./support.js"></script>
 </head>
 <body>
-  <p><a href="404.dc.html">Страница не найдена</a></p>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { margin: 0; padding-top: 72px; overflow-x: hidden; font-family: 'Inter', Arial, sans-serif; color: #142033; background: #f4f8fb; -webkit-font-smoothing: antialiased; }
+  x-dc { display: block; }
+  h1, h2, h3, p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  #menuToggle { display: none !important; }
+  .not-found-hero { min-height: calc(100vh - 72px); display: flex; align-items: center; position: relative; overflow: hidden; background: #0d2240; color: #fff; }
+  .not-found-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg,#0d2240 0%,rgba(13,34,64,.96) 36%,rgba(13,34,64,.74) 58%,rgba(13,34,64,.2) 100%), url("./photo-hero.png") center right / cover no-repeat; }
+  .not-found-hero::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(rgba(255,255,255,.035) 0 1px, transparent 1px 46px), repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 46px); pointer-events: none; }
+  .not-found-card { position: relative; z-index: 1; width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 72px 0 88px; }
+  .not-found-content { max-width: 610px; }
+  .not-found-code { display: inline-flex; margin-bottom: 18px; font-size: clamp(76px, 14vw, 150px); line-height: .82; font-weight: 800; letter-spacing: -.05em; color: #c8f4f8; text-shadow: 0 18px 50px rgba(0,0,0,.22); }
+  .not-found-title { font-size: clamp(34px, 5vw, 60px); line-height: .98; font-weight: 800; margin-bottom: 18px; letter-spacing: -.02em; }
+  .not-found-text { font-size: 17px; line-height: 1.65; color: rgba(255,255,255,.78); max-width: 520px; margin-bottom: 28px; }
+  .not-found-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 22px; border-radius: 8px; font-size: 14px; font-weight: 800; }
+  .btn-primary { background: #fff; color: #103f72; box-shadow: 0 12px 30px rgba(255,255,255,.14); }
+  .btn-secondary { border: 1.5px solid rgba(255,255,255,.38); color: #fff; background: rgba(255,255,255,.1); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  @media (max-width: 920px) {
+    #menuToggle { display: flex !important; }
+    #mainNav { display: none !important; position: absolute; top: 62px; right: 0; width: min(282px, calc(100vw - 48px)); flex-direction: column; gap: 2px; padding: 8px; background: rgba(255,255,255,.96); border: 1px solid #d4e0ea; border-radius: 14px; box-shadow: 0 18px 45px rgba(13,34,64,.18); z-index: 99; backdrop-filter: blur(18px); }
+    #mainNav.open { display: flex !important; }
+    #mainNav a { padding: 13px 14px !important; border-radius: 10px; color: #142033 !important; }
+    #mainNav a:hover { background: #eef6fa; }
+    #navEmail { display: none !important; }
+  }
+  @media (max-width: 700px) {
+    .not-found-hero { min-height: calc(100vh - 64px); align-items: flex-end; }
+    .not-found-hero::before { background: linear-gradient(180deg, rgba(13,34,64,.28) 0%, rgba(13,34,64,.52) 34%, rgba(13,34,64,.86) 60%, #0d2240 88%), url("./photo-hero.png") center top / cover no-repeat; }
+    .not-found-card { padding: 240px 0 52px; }
+    .not-found-text { font-size: 15px; }
+    .not-found-actions { display: grid; grid-template-columns: 1fr; }
+    .btn-primary, .btn-secondary { width: 100%; padding: 14px 18px; }
+    .footer-cols { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 480px) {
+    body { padding-top: 64px; }
+    header > div { width: calc(100% - 24px) !important; gap: 8px !important; min-height: 64px !important; }
+    header a[href="Главная.dc.html"] { gap: 8px !important; min-width: 0 !important; }
+    header a[href="Главная.dc.html"] > div:first-child { width: 34px !important; height: 40px !important; padding-bottom: 5px !important; flex-shrink: 0 !important; }
+    header a[href="Главная.dc.html"] > div:last-child > div:first-child { font-size: 14px !important; letter-spacing: .035em !important; }
+    header a[href="Главная.dc.html"] > div:last-child > div:last-child { display: none !important; }
+    header > div > div:last-child { gap: 7px !important; }
+    #navPhone { padding: 8px 9px !important; font-size: 12px !important; border-radius: 7px !important; }
+    #menuToggle { width: 36px !important; height: 36px !important; border-radius: 7px !important; }
+  }
+</style>
+</helmet>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,251,253,.96);border-bottom:1px solid rgba(212,224,234,.8);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);">
+  <div style="width:min(1360px,calc(100% - 48px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:24px;position:relative;">
+    <a href="Главная.dc.html" style="display:flex;align-items:center;gap:11px;flex-shrink:0;">
+      <div style="width:40px;height:46px;border-radius:5px;background:linear-gradient(180deg,#254e7c,#0d2240);display:grid;place-items:end center;padding-bottom:5px;">
+        <svg width="24" height="30" viewBox="0 0 26 32" fill="none"><path d="M0 32V12L5 9V32H8V2.5L13 0L18 2.5V32H21V9L26 12V32Z" fill="rgba(255,255,255,.92)"/></svg>
+      </div>
+      <div>
+        <div style="font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#0d2240;line-height:1.1;">МОССТРОЙ</div>
+        <div style="font-size:8.5px;color:#8097aa;text-transform:uppercase;letter-spacing:.09em;margin-top:2px;">строительное объединение</div>
+      </div>
+    </a>
+    <nav id="mainNav" style="display:flex;align-items:center;gap:14px;font-size:13.5px;font-weight:500;">
+      <a href="Главная.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">О компании</a>
+      <a href="Услуги.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Услуги</a>
+      <a href="Проекты.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Проекты</a>
+      <a href="Технологии.dc.html" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Технологии и качество</a>
+      <a href="#site-footer" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Контакты</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;margin-left:auto;">
+      <a id="navPhone" href="tel:+79160409065" style="padding:9px 12px;border:1px solid #d4e0ea;border-radius:7px;background:#fff;font-size:13.5px;font-weight:700;color:#142033;white-space:nowrap;">+7 (916) 040-90-65</a>
+      <a id="navEmail" href="mailto:real.stroy.real@yandex.ru" style="padding:9px 12px;border:1px solid #d4e0ea;border-radius:7px;background:#fff;font-size:13.5px;font-weight:700;color:#103f72;white-space:nowrap;">real.stroy.real@yandex.ru</a>
+      <button id="menuToggle" aria-label="Меню" style="width:40px;height:40px;border:1px solid #d4e0ea;border-radius:8px;background:#fff;cursor:pointer;align-items:center;justify-content:center;">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M0 1h18M0 7h18M0 13h18" stroke="#142033" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="not-found-hero">
+  <section class="not-found-card">
+    <div class="not-found-content">
+      <div class="not-found-code">404</div>
+      <h1 class="not-found-title">Страница не найдена</h1>
+      <p class="not-found-text">Возможно, ссылка устарела или адрес был введен с ошибкой. Вернитесь на главную страницу или откройте каталог реализованных проектов.</p>
+      <div class="not-found-actions">
+        <a class="btn-primary" href="Главная.dc.html">На главную →</a>
+        <a class="btn-secondary" href="Проекты.dc.html">Реализованные проекты →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" style="background:#0e1e30;padding:36px 0 24px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div class="footer-cols" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:28px;margin-bottom:28px;align-items:start;">
+      <div>
+        <a href="Главная.dc.html" style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+          <div style="width:36px;height:42px;border-radius:4px;background:rgba(255,255,255,.1);display:grid;place-items:end center;padding-bottom:5px;"><svg width="21" height="26" viewBox="0 0 26 32" fill="none"><path d="M0 32V12L5 9V32H8V2.5L13 0L18 2.5V32H21V9L26 12V32Z" fill="rgba(255,255,255,.78)"/></svg></div>
+          <div><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#fff;line-height:1.1;">МОССТРОЙ</div><div style="font-size:8.5px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">строительное объединение</div></div>
+        </a>
+        <p style="font-size:12px;color:rgba(255,255,255,.38);line-height:1.6;">© 2004–2026. Мосстрой.<br>Все права защищены.</p>
+      </div>
+      <div>
+        <div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">О компании</div>
+        <a href="Главная.dc.html#about" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">О нас</a>
+        <a href="Технологии.dc.html" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">Технологии и качество</a>
+      </div>
+      <div>
+        <a href="Услуги.dc.html" style="display:block;color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:8px;">Наши услуги</a>
+      </div>
+      <div>
+        <a href="Проекты.dc.html" style="display:block;color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:8px;">Реализованные проекты</a>
+      </div>
+      <div>
+        <div style="color:rgba(255,255,255,.9);font-weight:700;font-size:12.5px;margin-bottom:11px;">Контакты</div>
+        <a href="tel:+79160409065" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">+7 (916) 040-90-65</a>
+        <a href="mailto:real.stroy.real@yandex.ru" style="display:block;color:rgba(255,255,255,.55);font-size:12.5px;margin-bottom:8px;">real.stroy.real@yandex.ru</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.09);padding-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span style="font-size:11.5px;color:rgba(255,255,255,.35);">Политика конфиденциальности</span>
+      <span style="font-size:11.5px;color:rgba(255,255,255,.35);">ул. Большая Почтовая, 26В строение 2</span>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+    mainNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => mainNav.classList.remove('open')));
+  }
+</script>
 </body>
 </html>
