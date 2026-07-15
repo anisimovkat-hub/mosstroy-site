@@ -104,6 +104,9 @@
   .service-modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
   .service-modal-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 16px; border-radius: 8px; background: #103f72; color: #fff; font-size: 14px; font-weight: 800; }
   .service-details-btn { color: #103f72 !important; font-weight: 800 !important; cursor: pointer; }
+  .service-card-clickable { cursor: pointer; }
+  .service-card-clickable:focus-visible { outline: 3px solid rgba(74,184,200,.7); outline-offset: 3px; }
+  .service-external-btn { display:inline-flex; align-items:center; gap:6px; padding:10px 16px; border-radius:8px; background:#103f72; color:#fff; font-size:13.5px; font-weight:700; }
   @media (max-width: 920px) {
     #menuToggle { display: flex !important; }
     #mainNav { display: none !important; position: absolute; top: 62px; right: 0; left: auto; width: min(282px, calc(100vw - 48px)); flex-direction: column; gap: 2px; padding: 8px; background: rgba(255,255,255,.96); border: 1px solid #d4e0ea; border-radius: 14px; box-shadow: 0 18px 45px rgba(13,34,64,.18); z-index: 99; backdrop-filter: blur(18px); }
@@ -510,7 +513,7 @@
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.3) 0%,transparent 55%);pointer-events:none;"></div>
           <svg aria-hidden="true" style="display:none" viewBox="0 0 580 130" fill="none"><line x1="80" y1="130" x2="80" y2="20" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/><line x1="80" y1="20" x2="220" y2="28" stroke="rgba(255,255,255,.32)" stroke-width="2"/><line x1="80" y1="20" x2="30" y2="28" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/><line x1="190" y1="28" x2="190" y2="80" stroke="rgba(255,255,255,.22)" stroke-width="1.2" stroke-dasharray="4,3"/><rect x="70" y="80" width="50" height="30" rx="2" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/><circle cx="82" cy="115" r="10" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/><circle cx="106" cy="115" r="10" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2.5"/><line x1="250" y1="130" x2="250" y2="50" stroke="rgba(255,255,255,.28)" stroke-width="2"/><line x1="250" y1="50" x2="370" y2="55" stroke="rgba(255,255,255,.25)" stroke-width="1.8"/><rect x="240" y="90" width="60" height="25" rx="2" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/><circle cx="252" cy="118" r="9" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"/><circle cx="276" cy="118" r="9" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"/><rect x="400" y="65" width="160" height="45" rx="3" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/><line x1="400" y1="88" x2="560" y2="88" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/><circle cx="420" cy="112" r="10" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/><circle cx="450" cy="112" r="10" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/><circle cx="530" cy="112" r="10" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/><circle cx="558" cy="112" r="10" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/></svg>
         </div>
-        <div class="svc-feature-link" style="padding:12px 24px 18px;border-top:1px solid #f0f6fa;"><a href="https://as-groupp.ru" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:8px;background:#103f72;color:#fff;font-size:13.5px;font-weight:700;">Подробнее →</a></div>
+        <div class="svc-feature-link" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 24px 18px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13.5px;font-weight:700;color:#103f72;">Подробнее →</a><a class="service-external-btn" href="https://as-groupp.ru" target="_blank" rel="noopener">Арендовать спецтехнику →</a></div>
       </article>
 
     </div>
@@ -888,9 +891,13 @@ class Component extends DCLogic {
       card.dataset.serviceId = match.id;
       const text = card.querySelector('p');
       if (text) text.textContent = service.summary;
-      card.removeAttribute('role');
-      card.removeAttribute('tabindex');
-      card.querySelectorAll('a').forEach((link) => {
+      card.classList.add('service-card-clickable');
+      card.setAttribute('role', 'group');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `Подробнее: ${service.title}`);
+      const detailsLink = card.querySelector('[data-service-details]') || card.querySelector('a:not(.service-external-btn)');
+      if (detailsLink) {
+        const link = detailsLink;
         link.href = '#';
         link.classList.add('service-details-btn');
         link.textContent = 'Подробнее →';
@@ -899,6 +906,15 @@ class Component extends DCLogic {
           event.stopPropagation();
           openServiceModal(match.id);
         });
+      }
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button')) return;
+        openServiceModal(match.id);
+      });
+      card.addEventListener('keydown', (event) => {
+        if (event.target !== card || !['Enter', ' '].includes(event.key)) return;
+        event.preventDefault();
+        openServiceModal(match.id);
       });
     });
 
