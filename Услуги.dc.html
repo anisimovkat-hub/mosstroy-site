@@ -117,7 +117,7 @@
     #mainNav a span { display: none !important; }
     #navEmail { display: none !important; }
   }
-  @media @media (max-width: 900px) {
+  @media @media @media (max-width: 900px) {
     .svc-main-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .svc-main-grid article[style*="span 2"] { grid-column: span 2 !important; }
     .footer-cols { grid-template-columns: repeat(2, 1fr) !important; }
@@ -176,13 +176,16 @@
     header > div > div:last-child > a[href="#contacts"], #navPhone { padding: 8px 9px !important; font-size: 12px !important; border-radius: 7px !important; }
     #menuToggle { width: 36px !important; height: 36px !important; border-radius: 7px !important; }
   }
-  .work-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
-  .work-gallery figure { margin:0; overflow:hidden; border:1px solid #dce8f2; border-radius:10px; background:#fff; box-shadow:0 2px 12px rgba(14,61,114,.06); }
+  .work-gallery { display:grid; grid-auto-flow:column; grid-template-rows:repeat(2,minmax(0,1fr)); grid-auto-columns:calc((100% - 42px)/4); gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:0 0 8px; scrollbar-width:thin; }
+  .work-gallery figure { margin:0; overflow:hidden; border:1px solid #dce8f2; border-radius:10px; background:#fff; box-shadow:0 2px 12px rgba(14,61,114,.06); scroll-snap-align:start; }
   .work-gallery img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; transition:transform .25s ease; }
   .work-gallery figure:hover img { transform:scale(1.035); }
   .work-gallery figcaption { padding:9px 10px 10px; color:#506476; font-size:11.5px; font-weight:700; }
-   @media (max-width: 900px) { .work-gallery { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-   @media (max-width: 640px) { .work-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .work-gallery figcaption { font-size:11px; padding:8px 9px; } }
+  .gallery-controls { display:flex; gap:8px; flex-shrink:0; }
+  .gallery-control { width:38px; height:38px; border:1px solid #cfe0ec; border-radius:50%; background:#fff; color:#103f72; font-size:22px; line-height:1; cursor:pointer; }
+  .gallery-control:hover { background:#103f72; color:#fff; border-color:#103f72; }
+    @media (max-width: 900px) { .work-gallery { grid-auto-columns:calc((100% - 28px)/3); } }
+    @media (max-width: 640px) { .work-gallery { grid-template-rows:repeat(3,minmax(0,1fr)); grid-auto-columns:calc((100% - 10px)/2); gap:10px; } .work-gallery figcaption { font-size:11px; padding:8px 9px; } }
 </style>
 </helmet>
 
@@ -473,7 +476,10 @@
         <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ab8c8;box-shadow:0 0 0 4px rgba(74,184,200,.18);"></span><span style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#103f72;">Реальные объекты</span></div>
         <h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;color:#142033;line-height:1.1;">Процесс работ на объектах</h2>
       </div>
-      <p style="max-width:430px;font-size:13.5px;line-height:1.6;color:#627486;margin:0;">Фотографии с объектов Edifice: монолитные работы, кладка и отделка.</p>
+      <div style="display:flex;align-items:center;gap:18px;max-width:540px;">
+        <p style="font-size:13.5px;line-height:1.6;color:#627486;margin:0;">Фотографии с объектов Edifice: монолитные работы, кладка и отделка.</p>
+        <div class="gallery-controls" aria-label="Навигация по галерее"><button type="button" class="gallery-control" id="galleryPrev" aria-label="Предыдущие фотографии">‹</button><button type="button" class="gallery-control" id="galleryNext" aria-label="Следующие фотографии">›</button></div>
+      </div>
     </div>
     <div id="workGallery" class="work-gallery" aria-label="Галерея процесса работ"></div>
   </div>
@@ -800,8 +806,8 @@ class Component extends DCLogic {
     const modalSummary = document.getElementById('serviceModalSummary');
     const workGalleryGroups = [
       { id: 'monolith', label: 'Монолитные работы', count: 5 },
-      { id: 'masonry', label: 'Кладка', count: 7 },
-      { id: 'finishing', label: 'Отделка', count: 9 }
+      { id: 'masonry', label: 'Кладка', count: 6 },
+      { id: 'finishing', label: 'Отделка', count: 5 }
     ];
     const workGallery = document.getElementById('workGallery');
     if (workGallery) {
@@ -819,6 +825,13 @@ class Component extends DCLogic {
           workGallery.appendChild(figure);
         }
       });
+    }
+
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    if (workGallery && galleryPrev && galleryNext) {
+      galleryPrev.addEventListener('click', () => workGallery.scrollBy({ left: -workGallery.clientWidth, behavior: 'smooth' }));
+      galleryNext.addEventListener('click', () => workGallery.scrollBy({ left: workGallery.clientWidth, behavior: 'smooth' }));
     }
 
     const modalList = document.getElementById('serviceModalList');
