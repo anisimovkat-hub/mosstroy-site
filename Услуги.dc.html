@@ -117,7 +117,7 @@
     #mainNav a span { display: none !important; }
     #navEmail { display: none !important; }
   }
-  @media (max-width: 900px) {
+  @media @media (max-width: 900px) {
     .svc-main-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .svc-main-grid article[style*="span 2"] { grid-column: span 2 !important; }
     .footer-cols { grid-template-columns: repeat(2, 1fr) !important; }
@@ -176,6 +176,13 @@
     header > div > div:last-child > a[href="#contacts"], #navPhone { padding: 8px 9px !important; font-size: 12px !important; border-radius: 7px !important; }
     #menuToggle { width: 36px !important; height: 36px !important; border-radius: 7px !important; }
   }
+  .work-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+  .work-gallery figure { margin:0; overflow:hidden; border:1px solid #dce8f2; border-radius:10px; background:#fff; box-shadow:0 2px 12px rgba(14,61,114,.06); }
+  .work-gallery img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; transition:transform .25s ease; }
+  .work-gallery figure:hover img { transform:scale(1.035); }
+  .work-gallery figcaption { padding:9px 10px 10px; color:#506476; font-size:11.5px; font-weight:700; }
+   @media (max-width: 900px) { .work-gallery { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+   @media (max-width: 640px) { .work-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .work-gallery figcaption { font-size:11px; padding:8px 9px; } }
 </style>
 </helmet>
 
@@ -294,7 +301,7 @@
           <p style="font-size:13.5px;color:#627486;line-height:1.65;max-width:520px;">Полный цикл монолитных работ: опалубка, армирование, бетонирование, шлифовка и контроль качества.</p>
         </div>
         <div class="svc-feature-media" style="position:relative;overflow:hidden;">
-          <img src="./svc-01-monolith.png" alt="Монолитные работы на строительной площадке" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="./assets/services/monolith-1.jpg" alt="Монолитные работы на строительной площадке" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.32) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div class="svc-feature-link" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 24px 18px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13.5px;font-weight:700;color:#103f72;">Подробнее →</a></div>
@@ -306,7 +313,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Кладка кирпичных и блочных стен с геодезическим контролем, армированием, проемами и перемычками.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="./svc-05-masonry.png" alt="Кладка стен и перегородок из кирпича и блоков" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="./assets/services/masonry-1.jpg" alt="Кладка стен и перегородок из кирпича и блоков" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -318,7 +325,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Монтаж перегородок из пазогребневых плит: разметка, прокладки, кладка на клей и подготовка под чистовую отделку.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="./svc-06-pgp.png" alt="Монтаж перегородок из пазогребневых плит" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="./assets/services/masonry-2.jpg" alt="Монтаж перегородок из пазогребневых плит" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -390,7 +397,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Черновая и чистовая отделка квартир: стяжки, штукатурка, покрытия, двери, сантехника и финальная сдача.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="./svc-03-apartments.png" alt="Черновая и чистовая отделка квартиры" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="./assets/services/finishing-1.jpg" alt="Черновая и чистовая отделка квартиры" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -402,7 +409,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Отделка стен, потолков и полов МОП и технических помещений с подготовкой оснований и герметизацией примыканий.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="./svc-02-mop.png" alt="Отделка мест общего пользования" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="./assets/services/finishing-2.jpg" alt="Отделка мест общего пользования" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -414,7 +421,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Отделка электрощитовых, венткамер и подвалов с прочными полами, влагостойкими покрытиями и огнестойкими проходками.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="./svc-08-techrooms.png" alt="Отделка электрощитовой и технических помещений" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="./assets/services/finishing-3.jpg" alt="Отделка электрощитовой и технических помещений" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -455,6 +462,20 @@
         <div class="svc-feature-link" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 24px 18px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13.5px;font-weight:700;color:#103f72;">Подробнее →</a><a class="service-external-btn" href="https://as-groupp.ru" target="_blank" rel="noopener">Арендовать спецтехнику →</a></div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- REAL-WORK GALLERY -->
+<section style="padding:0 0 48px;">
+  <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:20px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ab8c8;box-shadow:0 0 0 4px rgba(74,184,200,.18);"></span><span style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#103f72;">Реальные объекты</span></div>
+        <h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;color:#142033;line-height:1.1;">Процесс работ на объектах</h2>
+      </div>
+      <p style="max-width:430px;font-size:13.5px;line-height:1.6;color:#627486;margin:0;">Фотографии с объектов Edifice: монолитные работы, кладка и отделка.</p>
+    </div>
+    <div id="workGallery" class="work-gallery" aria-label="Галерея процесса работ"></div>
   </div>
 </section>
 
@@ -614,7 +635,7 @@ class Component extends DCLogic {
       "monolith": {
             "title": "Монолитные работы",
             "summary": "Полный цикл монолитных работ: опалубка, армирование, бетонирование, шлифовка и контроль качества.",
-            "image": "./svc-01-monolith.png",
+            "image": "./assets/services/monolith-1.jpg",
             "items": [
                   "Опалубочные работы: установка, выверка, крепление, распалубка.",
                   "Армирование стен, колонн, перекрытий, шахт и лестниц, установка закладных и гидрошпонок.",
@@ -626,7 +647,7 @@ class Component extends DCLogic {
       "masonry": {
             "title": "Кладка стен и перегородок из кирпича и блоков, монтаж перемычек",
             "summary": "Кладка кирпичных и блочных стен с геодезическим контролем, армированием, проемами и перемычками.",
-            "image": "./svc-05-masonry.png",
+            "image": "./assets/services/masonry-1.jpg",
             "items": [
                   "Разбивка и геодезический контроль.",
                   "Кладка из кирпича, газо- и керамзитоблоков на раствор или клей.",
@@ -638,7 +659,7 @@ class Component extends DCLogic {
       "pgp": {
             "title": "Устройство перегородок из ПГП",
             "summary": "Монтаж перегородок из пазогребневых плит: разметка, прокладки, кладка на клей и подготовка под чистовую отделку.",
-            "image": "./svc-06-pgp.png",
+            "image": "./assets/services/masonry-2.jpg",
             "items": [
                   "Разметка и подготовка основания.",
                   "Устройство звукоизоляционных прокладок.",
@@ -712,7 +733,7 @@ class Component extends DCLogic {
       "apartments": {
             "title": "Отделка квартир: черновая и чистовая",
             "summary": "Черновая и чистовая отделка квартир: стяжки, штукатурка, покрытия, двери, сантехника и финальная сдача.",
-            "image": "./svc-03-apartments.png",
+            "image": "./assets/services/finishing-1.jpg",
             "items": [
                   "Черновая отделка: стяжка пола, шумо- или теплоизоляция, армирование, маяки.",
                   "Выравнивание стен, кладка перегородок из ПГП, подготовка откосов и ниш.",
@@ -725,7 +746,7 @@ class Component extends DCLogic {
       "mop": {
             "title": "Отделка МОП и технических помещений",
             "summary": "Отделка стен, потолков и полов МОП и технических помещений с подготовкой оснований и герметизацией примыканий.",
-            "image": "./svc-02-mop.png",
+            "image": "./assets/services/finishing-2.jpg",
             "items": [
                   "Подготовка оснований: очистка, грунтование, выравнивание.",
                   "Стены: штукатурка, шпатлевка, окраска, плитка или керамогранит, защитные панели, плинтусы, уголки и деформационные швы.",
@@ -737,7 +758,7 @@ class Component extends DCLogic {
       "techrooms": {
             "title": "Отделка помещений электрощитовых, венткамер, подвалов",
             "summary": "Отделка электрощитовых, венткамер и подвалов с прочными полами, влагостойкими покрытиями и огнестойкими проходками.",
-            "image": "./svc-08-techrooms.png",
+            "image": "./assets/services/finishing-3.jpg",
             "items": [
                   "Полы: прочные наливные или эпоксидные покрытия, керамогранит, плинтусы-бортики.",
                   "Стены и потолки: штукатурка, шпатлевка, износостойкие и влагостойкие краски.",
@@ -777,6 +798,29 @@ class Component extends DCLogic {
     const modalClose = document.getElementById('serviceModalClose');
     const modalTitle = document.getElementById('serviceModalTitle');
     const modalSummary = document.getElementById('serviceModalSummary');
+    const workGalleryGroups = [
+      { id: 'monolith', label: 'Монолитные работы', count: 5 },
+      { id: 'masonry', label: 'Кладка', count: 7 },
+      { id: 'finishing', label: 'Отделка', count: 9 }
+    ];
+    const workGallery = document.getElementById('workGallery');
+    if (workGallery) {
+      workGalleryGroups.forEach((group) => {
+        for (let index = 1; index <= group.count; index += 1) {
+          const figure = document.createElement('figure');
+          const image = document.createElement('img');
+          image.src = "./assets/services/" + group.id + "-" + index + ".jpg";
+          image.alt = group.label + ": процесс работ на объекте";
+          image.loading = 'lazy';
+          image.decoding = 'async';
+          const caption = document.createElement('figcaption');
+          caption.textContent = group.label;
+          figure.append(image, caption);
+          workGallery.appendChild(figure);
+        }
+      });
+    }
+
     const modalList = document.getElementById('serviceModalList');
     const modalImage = document.getElementById('serviceModalImage');
     const modalProjects = document.getElementById('serviceModalProjects');
