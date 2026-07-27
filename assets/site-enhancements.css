@@ -1,0 +1,136 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/assets/fonts/inter-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.breadcrumbs-bar {
+  position: relative;
+  z-index: 20;
+  background: #f7fbfd;
+  border-bottom: 1px solid #e2ebf2;
+}
+
+.breadcrumbs {
+  width: min(1200px, calc(100% - 48px));
+  min-height: 44px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #63778a;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.breadcrumbs a {
+  color: #103f72;
+  font-weight: 600;
+}
+
+.breadcrumbs a:hover {
+  color: #0b7f92;
+}
+
+.breadcrumbs-separator {
+  color: #9babb9;
+}
+
+.breadcrumbs-current {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cookie-notice {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2000;
+  width: min(520px, calc(100% - 40px));
+  padding: 20px;
+  border: 1px solid rgba(126, 154, 178, .35);
+  border-radius: 14px;
+  background: rgba(13, 34, 64, .98);
+  box-shadow: 0 18px 60px rgba(3, 16, 31, .28);
+  color: #fff;
+}
+
+.cookie-notice[hidden] {
+  display: none;
+}
+
+.cookie-notice p {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, .8);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.cookie-notice a {
+  color: #9be4ed;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cookie-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.cookie-button {
+  min-height: 40px;
+  padding: 0 15px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cookie-button-primary {
+  border-color: #4ab8c8;
+  background: #4ab8c8;
+}
+
+.cookie-button:focus-visible,
+.breadcrumbs a:focus-visible {
+  outline: 3px solid rgba(74, 184, 200, .5);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .breadcrumbs {
+    width: calc(100% - 28px);
+    min-height: 40px;
+    font-size: 12px;
+  }
+
+  .cookie-notice {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    padding: 16px;
+  }
+
+  .cookie-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

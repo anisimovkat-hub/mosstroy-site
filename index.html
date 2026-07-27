@@ -10,6 +10,9 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0d2240">
 <link rel="canonical" href="https://edifice-stroy.ru/">
+<link rel="alternate" hreflang="ru-RU" href="https://edifice-stroy.ru/">
+<link rel="alternate" hreflang="x-default" href="https://edifice-stroy.ru/">
+<link rel="stylesheet" href="/assets/site-enhancements.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Edifice">
 <meta property="og:locale" content="ru_RU">
@@ -17,19 +20,18 @@
 <meta property="og:description" content="Строительные, отделочные и инженерные работы на жилых и коммерческих объектах в Москве и Московской области.">
 <meta property="og:url" content="https://edifice-stroy.ru/">
 <meta property="og:image" content="https://edifice-stroy.ru/photo-hero.png">
+<meta property="og:image:alt" content="Строительный объект компании Edifice">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Edifice — строительные, отделочные и инженерные работы в Москве и МО">
 <meta name="twitter:description" content="Строительные, отделочные и инженерные работы на жилых и коммерческих объектах в Москве и Московской области.">
 <meta name="twitter:image" content="https://edifice-stroy.ru/photo-hero.png">
+<meta name="twitter:image:alt" content="Строительный объект компании Edifice">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://edifice-stroy.ru/#organization","name":"Edifice","url":"https://edifice-stroy.ru/","telephone":"+79160409065","email":"real.stroy.real@yandex.ru","address":{"@type":"PostalAddress","streetAddress":"ул. Большая Почтовая, 26В строение 2","addressLocality":"Москва","addressCountry":"RU"},"areaServed":["Москва","Московская область"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"}]},{"@type":"WebSite","@id":"https://edifice-stroy.ru/#website","url":"https://edifice-stroy.ru/","name":"Edifice","publisher":{"@id":"https://edifice-stroy.ru/#organization"}},{"@type":"WebPage","@id":"https://edifice-stroy.ru/#webpage","url":"https://edifice-stroy.ru/","name":"Edifice — строительные, отделочные и инженерные работы в Москве и МО","isPartOf":{"@id":"https://edifice-stroy.ru/#website"},"about":{"@id":"https://edifice-stroy.ru/#organization"}}]}</script>
-<script src="./support.js"></script>
+<script defer src="/assets/site-enhancements.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 86px; overflow-x: hidden; }
@@ -151,20 +153,19 @@
     #menuToggle { width: 36px !important; height: 36px !important; border-radius: 7px !important; }
   }
 </style>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 </helmet>
 
 <!-- HEADER -->
 <header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,251,253,.96);border-bottom:1px solid rgba(212,224,234,.8);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);">
   <div style="width:min(1360px,calc(100% - 48px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:24px;position:relative;">
-    <a href="/" style="display:flex;align-items:center;flex-shrink:0;line-height:0;"><img class="brand-logo" src="/assets/brand/edifice-logo-header.png?v=20260715b" alt="Edifice"></a>
+    <a href="/" aria-label="Edifice — на главную" style="display:flex;align-items:center;flex-shrink:0;line-height:0;"><img class="brand-logo" src="/assets/brand/edifice-logo-header.webp?v=20260727" alt="Edifice" width="900" height="364"></a>
 
     <nav id="mainNav" style="display:flex;align-items:center;gap:14px;font-size:13.5px;font-weight:500;">
       <a href="/" style="color:#103f72;padding:22px 10px 18px;position:relative;white-space:nowrap;">О компании<span style="position:absolute;bottom:12px;left:10px;right:10px;height:2px;background:#4ab8c8;border-radius:1px;display:block;"></span></a>
       <a href="/services/" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Услуги</a>
       <a href="/projects/" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Проекты</a>
       <a href="/technologies/" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Технологии и качество</a>
-      <a href="#site-footer" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Контакты</a>
+      <a href="#contacts" style="color:#3a4e62;padding:22px 10px 18px;white-space:nowrap;">Контакты</a>
     </nav>
 
     <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;margin-left:auto;">
@@ -179,7 +180,7 @@
 
 <!-- HERO -->
 <section class="site-hero">
-  <img class="hero-photo" src="./photo-hero.png" alt="Строительная площадка с монолитными конструкциями и краном">
+  <img class="hero-photo" src="/photo-hero.webp" srcset="/photo-hero-720.webp 720w, /photo-hero-900.webp 900w, /photo-hero.webp 1400w" sizes="(max-width: 780px) 100vw, 64vw" alt="Строительная площадка с монолитными конструкциями и краном" width="1400" height="1120" fetchpriority="high" decoding="async">
   <div class="hero-blend"></div>
   <!-- Building silhouettes (CSS art) -->
   <svg style="display:none" viewBox="0 0 640 540" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -309,51 +310,51 @@
     </div>
     <div class="svc-grid" style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;">
       <article class="home-service-card">
-        <img src="./svc-01-monolith.png" alt="Монолитные конструкции на строительной площадке">
+        <img src="/svc-01-monolith-card.webp" alt="Монолитные конструкции на строительной площадке" loading="lazy" decoding="async">
         <h3>Монолитные конструкции</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-02-mop.png" alt="Отделка мест общего пользования">
+        <img src="/svc-02-mop-card.webp" alt="Отделка мест общего пользования" loading="lazy" decoding="async">
         <h3>Отделка МОП и технических помещений</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-03-apartments.png" alt="Черновая и чистовая отделка квартиры">
+        <img src="/svc-03-apartments-card.webp" alt="Черновая и чистовая отделка квартиры" loading="lazy" decoding="async">
         <h3>Отделка квартир: черновая и чистовая</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-04-pipes.png" alt="Монтаж инженерных сетей">
+        <img src="/svc-04-pipes-card.webp" alt="Монтаж инженерных сетей" loading="lazy" decoding="async">
         <h3>Инженерные сети</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-05-masonry.png" alt="Кладка стен и перегородок">
+        <img src="/svc-05-masonry-card.webp" alt="Кладка стен и перегородок" loading="lazy" decoding="async">
         <h3>Кладка стен и перегородок</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-06-pgp.png" alt="Перегородки из ПГП">
+        <img src="/svc-06-pgp-card.webp" alt="Перегородки из ПГП" loading="lazy" decoding="async">
         <h3>Перегородки из ПГП</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-07-foundation.png" alt="Вертикальная гидроизоляция фундамента">
+        <img src="/svc-07-foundation-card.webp" alt="Вертикальная гидроизоляция фундамента" loading="lazy" decoding="async">
         <h3>Вертикальная гидроизоляция фундамента</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-08-techrooms.png" alt="Отделка технических помещений">
+        <img src="/svc-08-techrooms-card.webp" alt="Отделка технических помещений" loading="lazy" decoding="async">
         <h3>Отделка электрощитовых, венткамер, подвалов</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-09-roof.png" alt="Гидроизоляция кровли">
+        <img src="/svc-09-roof-card.webp" alt="Гидроизоляция кровли" loading="lazy" decoding="async">
         <h3>Гидроизоляция и «пирог» кровли</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-10-doors.png" alt="Установка дверных блоков и люков">
+        <img src="/svc-10-doors-card.webp" alt="Установка дверных блоков и люков" loading="lazy" decoding="async">
         <h3>Установка дверных блоков и люков</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-11-earthworks.png" alt="Земляные работы и подготовка территории">
+        <img src="/svc-11-earthworks-card.webp" alt="Земляные работы и подготовка территории" loading="lazy" decoding="async">
         <h3>Земляные работы</h3>
       </article>
       <article class="home-service-card">
-        <img src="./svc-12-supply.png" alt="Поставка строительных материалов">
+        <img src="/svc-12-supply-card.webp" alt="Поставка строительных материалов" loading="lazy" decoding="async">
         <h3>Поставка строительных материалов</h3>
       </article>
     </div>
@@ -411,7 +412,7 @@
     <!-- Photo -->
     <div style="border-radius:12px;height:300px;position:relative;overflow:visible;">
       <div style="position:absolute;left:8%;right:8%;bottom:-22px;height:62px;border-radius:50%;background:rgba(255,255,255,.58);filter:blur(26px);z-index:0;"></div>
-      <img src="./photo-about.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;border-radius:12px;box-shadow:0 18px 48px rgba(255,255,255,.16),0 16px 42px rgba(2,12,28,.24);" alt="Строительный объект">
+      <img src="/photo-about.webp" srcset="/photo-about-720.webp 720w, /photo-about.webp 1400w" sizes="(max-width: 780px) calc(100vw - 48px), 52vw" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;border-radius:12px;box-shadow:0 18px 48px rgba(255,255,255,.16),0 16px 42px rgba(2,12,28,.24);" alt="Строительный объект" loading="lazy" decoding="async">
       <div style="position:absolute;inset:0;border-radius:12px;background:repeating-linear-gradient(rgba(255,255,255,.045) 0 1px,transparent 1px 38px),repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,transparent 1px 38px);z-index:3;pointer-events:none;"></div>
     </div>
   </div>
@@ -466,7 +467,7 @@
     <div class="prj-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;">
       <article class="home-project-card">
         <div class="home-project-media">
-          <img src="/assets/projects/odintsovo-city-23.jpg" alt="ЖК Одинцово Сити, корпус 23">
+          <img src="/assets/projects/odintsovo-city-23.webp" alt="ЖК Одинцово Сити, корпус 23" loading="lazy" decoding="async">
           <span>Жилой комплекс</span>
         </div>
         <div class="home-project-body">
@@ -476,7 +477,7 @@
       </article>
       <article class="home-project-card">
         <div class="home-project-media">
-          <img src="/assets/projects/mytischi-city-1-5.png" alt="ЖК Мытищи Сити, корпуса 1 и 5">
+          <img src="/assets/projects/mytischi-city-1-5.webp" alt="ЖК Мытищи Сити, корпуса 1 и 5" loading="lazy" decoding="async">
           <span>Жилой комплекс</span>
         </div>
         <div class="home-project-body">
@@ -486,7 +487,7 @@
       </article>
       <article class="home-project-card">
         <div class="home-project-media">
-          <img src="/assets/projects/mytischi-city.jpg" alt="ЖК Мытищи Сити">
+          <img src="/assets/projects/mytischi-city.webp" alt="ЖК Мытищи Сити" loading="lazy" decoding="async">
           <span>Жилой комплекс</span>
         </div>
         <div class="home-project-body">
@@ -496,7 +497,7 @@
       </article>
       <article class="home-project-card">
         <div class="home-project-media">
-          <img src="/assets/projects/brigantina.jpg" alt="ЖК Бригантина">
+          <img src="/assets/projects/brigantina.webp" alt="ЖК Бригантина" loading="lazy" decoding="async">
           <span>Жилой комплекс</span>
         </div>
         <div class="home-project-body">
@@ -506,7 +507,7 @@
       </article>
       <article class="home-project-card">
         <div class="home-project-media">
-          <img src="/assets/projects/afrodita.jpg" alt="ЖК Афродита">
+          <img src="/assets/projects/afrodita.webp" alt="ЖК Афродита" loading="lazy" decoding="async">
           <span>Жилой комплекс</span>
         </div>
         <div class="home-project-body">
@@ -611,16 +612,15 @@
       </div>
     </div>
     <div style="border-top:1px solid rgba(255,255,255,.09);padding-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-      <span style="font-size:11.5px;color:rgba(255,255,255,.35);">Политика конфиденциальности</span>
+      <a href="/privacy/" style="font-size:11.5px;color:rgba(255,255,255,.55);">Политика конфиденциальности</a>
       <span style="font-size:11.5px;color:rgba(255,255,255,.35);">ул. Большая Почтовая, 26В строение 2</span>
     </div>
   </div>
 </footer>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  componentDidMount() {
+<script>
+(() => {
     const objectMapPoints = [
       { title: 'ЖК «Дмитров Сити»', address: 'МО, г. Дмитров, ул. Шлюзовая', years: '2021-2022', client: 'ГК «Березовец»', works: 'Отделка МОП и технических помещений', status: 'Завершен', coords: [56.3428, 37.5286] },
       { title: 'ЖК «Афродита»', address: 'Заречная улица, 9А, пос. Мебельной Фабрики, Мытищи', years: '2021-2022', client: 'ГК «Березовец»', works: 'Черновая и чистовая отделка квартир', status: 'Завершен', coords: [55.9147, 37.9890] },
@@ -743,7 +743,39 @@ class Component extends DCLogic {
       });
     }
 
-    initObjectsMap('homeObjectsMap');
+    function loadYandexMaps(mapId) {
+      if (window.ymaps) {
+        initObjectsMap(mapId);
+        return;
+      }
+      const existingScript = document.querySelector('script[data-yandex-maps]');
+      if (existingScript) {
+        existingScript.addEventListener('load', () => initObjectsMap(mapId), { once: true });
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
+      script.async = true;
+      script.dataset.yandexMaps = 'true';
+      script.addEventListener('load', () => initObjectsMap(mapId), { once: true });
+      script.addEventListener('error', () => {
+        const mapNode = document.getElementById(mapId);
+        if (mapNode) mapNode.innerHTML = '<div class="object-map-fallback">Не удалось загрузить Яндекс.Карты. Проверьте подключение к интернету.</div>';
+      }, { once: true });
+      document.head.appendChild(script);
+    }
+
+    const homeMapNode = document.getElementById('homeObjectsMap');
+    if (homeMapNode && 'IntersectionObserver' in window) {
+      const mapObserver = new IntersectionObserver((entries, observer) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        loadYandexMaps('homeObjectsMap');
+      }, { rootMargin: '500px 0px' });
+      mapObserver.observe(homeMapNode);
+    } else {
+      loadYandexMaps('homeObjectsMap');
+    }
 
     function scrollToPageHash() {
       if (!window.location.hash) return;
@@ -782,9 +814,7 @@ class Component extends DCLogic {
         window.setTimeout(scrollToPageHash, 20);
       });
     });
-  }
-  renderVals() { return {}; }
-}
+})();
 </script>
 </body>
 </html>

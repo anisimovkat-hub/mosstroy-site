@@ -10,6 +10,9 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0d2240">
 <link rel="canonical" href="https://edifice-stroy.ru/projects/">
+<link rel="alternate" hreflang="ru-RU" href="https://edifice-stroy.ru/projects/">
+<link rel="alternate" hreflang="x-default" href="https://edifice-stroy.ru/projects/">
+<link rel="stylesheet" href="/assets/site-enhancements.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Edifice">
 <meta property="og:locale" content="ru_RU">
@@ -17,19 +20,18 @@
 <meta property="og:description" content="Жилые комплексы, жилые дома и коммерческие помещения в Москве и Московской области.">
 <meta property="og:url" content="https://edifice-stroy.ru/projects/">
 <meta property="og:image" content="https://edifice-stroy.ru/photo-about.png">
+<meta property="og:image:alt" content="Реализованные строительные проекты Edifice">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Реализованные проекты — Edifice">
 <meta name="twitter:description" content="Каталог объектов Edifice в Москве и Московской области.">
 <meta name="twitter:image" content="https://edifice-stroy.ru/photo-about.png">
+<meta name="twitter:image:alt" content="Реализованные строительные проекты Edifice">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://edifice-stroy.ru/projects/#webpage","url":"https://edifice-stroy.ru/projects/","name":"Реализованные проекты — Edifice","isPartOf":{"@id":"https://edifice-stroy.ru/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://edifice-stroy.ru/"},{"@type":"ListItem","position":2,"name":"Проекты","item":"https://edifice-stroy.ru/projects/"}]}]}</script>
-<script src="./support.js"></script>
+<script defer src="/assets/site-enhancements.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 86px; overflow-x: hidden; }
@@ -153,13 +155,13 @@
 <!-- HEADER -->
 <header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(247,251,253,.93);border-bottom:1px solid rgba(212,224,234,.75);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);">
   <div style="width:min(1360px,calc(100% - 48px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:24px;position:relative;">
-    <a href="/" style="display:flex;align-items:center;flex-shrink:0;line-height:0;"><img class="brand-logo" src="/assets/brand/edifice-logo-header.png?v=20260715b" alt="Edifice"></a>
+    <a href="/" aria-label="Edifice — на главную" style="display:flex;align-items:center;flex-shrink:0;line-height:0;"><img class="brand-logo" src="/assets/brand/edifice-logo-header.webp?v=20260727" alt="Edifice" width="900" height="364"></a>
     <nav id="mainNav" style="display:flex;align-items:center;gap:24px;font-size:14px;font-weight:500;">
       <a href="/" style="color:#233247;padding:26px 0 22px;white-space:nowrap;">О компании</a>
       <a href="/services/" style="color:#233247;padding:26px 0 22px;white-space:nowrap;">Услуги</a>
       <a href="/projects/" style="color:#103f72;padding:26px 0 22px;position:relative;white-space:nowrap;">Проекты<span style="position:absolute;bottom:14px;left:0;right:0;height:2px;background:#4ab8c8;border-radius:1px;display:block;"></span></a>
       <a href="/technologies/" style="color:#233247;padding:26px 0 22px;white-space:nowrap;">Технологии и качество</a>
-      <a href="#site-footer" style="color:#233247;padding:26px 0 22px;white-space:nowrap;">Контакты</a>
+      <a href="#contacts" style="color:#233247;padding:26px 0 22px;white-space:nowrap;">Контакты</a>
     </nav>
     <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;">
       <a id="navPhone" href="tel:+79160409065" style="padding:10px 13px;border:1px solid #d4e0ea;border-radius:8px;background:rgba(255,255,255,.9);font-size:14px;font-weight:700;color:#142033;white-space:nowrap;">+7 (916) 040-90-65</a>
@@ -171,9 +173,17 @@
   </div>
 </header>
 
+<div class="breadcrumbs-bar">
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <a href="/">Главная</a>
+    <span class="breadcrumbs-separator" aria-hidden="true">/</span>
+    <span class="breadcrumbs-current" aria-current="page">Проекты</span>
+  </nav>
+</div>
+
 <!-- HERO -->
 <section style="position:relative;min-height:420px;overflow:hidden;display:flex;align-items:center;background:#d8ecf8;">
-  <img src="assets/projects/odintsovo-city-2.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center right;filter:saturate(.95);">
+  <img src="/assets/projects/odintsovo-city-2.webp" alt="Реализованный строительный объект Edifice" width="1200" height="900" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center right;filter:saturate(.95);">
   <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(247,251,253,.98) 0%,rgba(247,251,253,.92) 38%,rgba(235,246,254,.72) 58%,rgba(13,34,64,.12) 100%);"></div>
   <div style="position:absolute;inset:0;background:repeating-linear-gradient(rgba(16,63,112,.035) 0 1px,transparent 1px 44px),repeating-linear-gradient(90deg,rgba(16,63,112,.035) 0 1px,transparent 1px 44px);"></div>
   <div style="position:relative;z-index:1;width:min(1200px,calc(100% - 48px));margin:0 auto;padding:70px 0 90px;">
@@ -683,15 +693,14 @@
       </div>
     </div>
     <div style="border-top:1px solid rgba(255,255,255,.09);padding-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-      <span style="font-size:11.5px;color:rgba(255,255,255,.35);">Политика конфиденциальности</span>
+      <a href="/privacy/" style="font-size:11.5px;color:rgba(255,255,255,.55);">Политика конфиденциальности</a>
       <span style="font-size:11.5px;color:rgba(255,255,255,.35);">ул. Большая Почтовая, 26В строение 2</span>
     </div>
   </div>
 </footer>
 </x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  componentDidMount() {
+<script>
+(() => {
     const objectMapPoints = [
       {
             "title": "ЖК «Дмитров Сити»",
@@ -1412,23 +1421,23 @@ class Component extends DCLogic {
 ];
     const projectDetailsById = new Map(projectDetails.map((project) => [project.id, project]));
     const projectImages = {
-      'dmitrov-city': '/assets/projects/dmitrov-city.jpg',
-      'afrodita': '/assets/projects/afrodita.jpg',
-      'lesnoy-kvartal': '/assets/projects/lesnoy-kvartal.jpg',
-      'brigantina': '/assets/projects/brigantina.jpg',
-      'mytischi-city': '/assets/projects/mytischi-city.jpg',
-      'atlantis': '/assets/projects/atlantis.jpg',
-      'renovation-lihachevsky': '/assets/projects/renovation-lihachevsky.jpg',
-      'vysokie-zhavoronki': '/assets/projects/vysokie-zhavoronki.jpg',
-      'pinsky': '/assets/projects/pinsky.png',
-      'mascotte': '/assets/projects/mascotte.png',
-      'renovation-raduzhnaya': '/assets/projects/renovation-raduzhnaya.jpg',
-      'mytischi-city-1-5': '/assets/projects/mytischi-city-1-5.png',
-      'odintsovo-city-23': '/assets/projects/odintsovo-city-23.jpg',
-      'megapolis': '/assets/projects/megapolis.jpg',
-      'odintsovo-city-2': '/assets/projects/odintsovo-city-2.jpg',
-      'u2': '/assets/projects/u2.jpg',
-      'vyazemy-park': '/assets/projects/vyazemy-park.jpg'
+      'dmitrov-city': '/assets/projects/dmitrov-city.webp',
+      'afrodita': '/assets/projects/afrodita.webp',
+      'lesnoy-kvartal': '/assets/projects/lesnoy-kvartal.webp',
+      'brigantina': '/assets/projects/brigantina.webp',
+      'mytischi-city': '/assets/projects/mytischi-city.webp',
+      'atlantis': '/assets/projects/atlantis.webp',
+      'renovation-lihachevsky': '/assets/projects/renovation-lihachevsky.webp',
+      'vysokie-zhavoronki': '/assets/projects/vysokie-zhavoronki.webp',
+      'pinsky': '/assets/projects/pinsky.webp',
+      'mascotte': '/assets/projects/mascotte.webp',
+      'renovation-raduzhnaya': '/assets/projects/renovation-raduzhnaya.webp',
+      'mytischi-city-1-5': '/assets/projects/mytischi-city-1-5.webp',
+      'odintsovo-city-23': '/assets/projects/odintsovo-city-23.webp',
+      'megapolis': '/assets/projects/megapolis.webp',
+      'odintsovo-city-2': '/assets/projects/odintsovo-city-2.webp',
+      'u2': '/assets/projects/u2.webp',
+      'vyazemy-park': '/assets/projects/vyazemy-park.webp'
     };
     const cards = Array.from(document.querySelectorAll('#projectCards article'));
     const foundCount = document.getElementById('foundCount');
@@ -1564,6 +1573,8 @@ class Component extends DCLogic {
       const image = document.createElement('img');
       image.src = imageSrc;
       image.alt = card.dataset.title || 'Фото объекта';
+      image.loading = 'lazy';
+      image.decoding = 'async';
       media.prepend(image);
       media.classList.add('has-photo');
     });
@@ -1615,9 +1626,7 @@ class Component extends DCLogic {
 
     applyInitialFiltersFromUrl();
     setProjectView('grid');
-  }
-  renderVals() { return {}; }
-}
+})();
 </script>
 </body>
 </html>
