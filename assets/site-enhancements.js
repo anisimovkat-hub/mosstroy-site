@@ -29,6 +29,38 @@
     }
   }
 
+  function mountInteractiveButtonEffects() {
+    const candidates = document.querySelectorAll(
+      'button, input[type="submit"], input[type="button"], input[type="reset"], a'
+    );
+
+    candidates.forEach(function (element) {
+      const className = typeof element.className === 'string' ? element.className : '';
+      const isNativeButton = element.matches('button, input[type="submit"], input[type="button"], input[type="reset"], [role="button"]');
+      const hasButtonClass = /(^|[\s_-])(btn|button)([\s_-]|$)/i.test(className);
+
+      if (isNativeButton || hasButtonClass) {
+        element.classList.add('site-interactive-button');
+        return;
+      }
+
+      if (element.tagName !== 'A') return;
+      const style = window.getComputedStyle(element);
+      const hasBackground =
+        (style.backgroundColor !== 'rgba(0, 0, 0, 0)' && style.backgroundColor !== 'transparent') ||
+        style.backgroundImage !== 'none';
+      const hasBorder =
+        parseFloat(style.borderTopWidth) > 0 &&
+        style.borderTopStyle !== 'none' &&
+        style.borderTopColor !== 'rgba(0, 0, 0, 0)';
+      const isRounded = parseFloat(style.borderTopLeftRadius) >= 4;
+
+      if ((hasBackground || hasBorder) && isRounded) {
+        element.classList.add('site-interactive-button');
+      }
+    });
+  }
+
   function mountCookieNotice() {
     if (hasConsentChoice()) return;
 
@@ -53,9 +85,14 @@
     document.body.appendChild(notice);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mountCookieNotice);
-  } else {
+  function mountSiteEnhancements() {
     mountCookieNotice();
+    mountInteractiveButtonEffects();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mountSiteEnhancements);
+  } else {
+    mountSiteEnhancements();
   }
 })();
