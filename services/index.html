@@ -27,7 +27,7 @@
 <meta name="twitter:image" content="https://edifice-stroy.ru/photo-services.png">
 <meta name="twitter:image:alt" content="Строительные услуги компании Edifice">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://edifice-stroy.ru/services/#webpage","url":"https://edifice-stroy.ru/services/","name":"Строительные услуги в Москве и МО — Edifice","isPartOf":{"@id":"https://edifice-stroy.ru/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://edifice-stroy.ru/"},{"@type":"ListItem","position":2,"name":"Услуги","item":"https://edifice-stroy.ru/services/"}]},{"@type":"ItemList","name":"Строительные услуги Edifice","itemListElement":[{"@type":"ListItem","position":1,"name":"Монолитные работы"},{"@type":"ListItem","position":2,"name":"Кладка стен и перегородок из кирпича и блоков, монтаж перемычек"},{"@type":"ListItem","position":3,"name":"Устройство перегородок из ПГП"},{"@type":"ListItem","position":4,"name":"Устройство гидроизоляции и «пирога» кровли"},{"@type":"ListItem","position":5,"name":"Устройство вертикальной гидроизоляции фундамента"},{"@type":"ListItem","position":6,"name":"Земляные работы"},{"@type":"ListItem","position":7,"name":"Устройство инженерных сетей: ХВС/ГВС, пожаротушение, канализация, отопление, сантехника в санузлах"},{"@type":"ListItem","position":8,"name":"Установка дверных блоков и люков"},{"@type":"ListItem","position":9,"name":"Отделка квартир: черновая и чистовая"},{"@type":"ListItem","position":10,"name":"Отделка МОП и технических помещений"},{"@type":"ListItem","position":11,"name":"Отделка помещений электрощитовых, венткамер, подвалов"},{"@type":"ListItem","position":12,"name":"Поставка строительных материалов"},{"@type":"ListItem","position":13,"name":"Услуги аренды спецтехники"}]}]}</script>
-<script defer src="/assets/site-enhancements.js"></script>
+<script defer src="/assets/site-enhancements.js?v=20260727b"></script>
 </head>
 <body>
 <x-dc>
@@ -49,6 +49,10 @@
   .services-hero-title { font-size: clamp(44px, 6.5vw, 76px); font-weight: 800; line-height: .92; color: #fff; letter-spacing: -.01em; margin-bottom: 16px; max-width: 520px; text-shadow: 0 2px 18px rgba(0,0,0,.28); }
   .services-hero-lead { font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.82); margin-bottom: 26px; max-width: 470px; }
   .services-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-stats-shell { position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,.12); background: rgba(7,20,40,.52); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+  .hero-stats-row { width: min(1240px, calc(100% - 48px)); margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero-stat-item { min-width: 0; padding: 16px 28px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .hero-stat-content { width: 172px; min-width: 0; }
   .svc-card { transition: box-shadow .18s, transform .18s; }
   .svc-card:hover { box-shadow: 0 6px 28px rgba(14,61,114,.14) !important; transform: translateY(-2px); }
   .svc-main-grid > .svc-card:not(.svc-feature-card) {
@@ -119,7 +123,7 @@
     #mainNav a span { display: none !important; }
     #navEmail { display: none !important; }
   }
-  @media @media @media (max-width: 900px) {
+  @media (max-width: 900px) {
     .svc-main-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .svc-main-grid article[style*="span 2"] { grid-column: span 2 !important; }
     .footer-cols { grid-template-columns: repeat(2, 1fr) !important; }
@@ -128,7 +132,7 @@
     .svc-main-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
     .svc-main-grid article[style*="span 2"] { grid-column: span 2 !important; }
     .cta-inner { flex-direction: column !important; align-items: flex-start !important; }
-    .hero-stats-row { grid-template-columns: repeat(3, 1fr) !important; }
+    .hero-stats-row { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
     .services-hero { min-height: 0 !important; }
     .services-hero-photo { left: 0 !important; right: auto !important; width: 100% !important; height: 72% !important; object-position: center top !important; }
     .services-hero-blend { background: linear-gradient(180deg, rgba(13,34,64,.32) 0%, rgba(13,34,64,.42) 26%, rgba(13,34,64,.62) 44%, rgba(13,34,64,.86) 62%, #0d2240 84%, #0d2240 100%) !important; }
@@ -137,7 +141,8 @@
     .services-hero-lead { font-size: 16px !important; line-height: 1.55 !important; max-width: 360px !important; margin-bottom: 22px !important; color: rgba(255,255,255,.86) !important; }
     .services-hero-actions { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
     .services-hero-actions a { width: 100%; justify-content: center; padding: 14px 18px !important; }
-    .hero-stats-row > div { padding: 10px 6px !important; gap: 5px !important; justify-content: center !important; }
+    .hero-stat-item { padding: 10px 6px !important; gap: 5px !important; justify-content: center !important; }
+    .hero-stat-content { width: auto !important; }
     .hero-stats-row svg { width: 19px !important; height: 19px !important; flex-shrink: 0 !important; }
     .hero-stats-row strong { font-size: 16px !important; }
     .hero-stats-row span { font-size: 8.5px !important; line-height: 1.15 !important; margin-top: 2px !important; }
@@ -177,6 +182,7 @@
     header > div > div:last-child { gap: 7px !important; }
     header > div > div:last-child > a[href="#contacts"], #navPhone { padding: 8px 9px !important; font-size: 12px !important; border-radius: 7px !important; }
     #menuToggle { width: 36px !important; height: 36px !important; border-radius: 7px !important; }
+    .hero-stats-row { width: calc(100% - 24px) !important; }
   }
   .work-gallery { display:grid; grid-auto-flow:column; grid-template-rows:repeat(2,minmax(0,1fr)); grid-auto-columns:calc((100% - 42px)/4); gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:0 0 8px; scrollbar-width:thin; }
   .work-gallery figure { margin:0; overflow:hidden; border:1px solid #dce8f2; border-radius:10px; background:#fff; box-shadow:0 2px 12px rgba(14,61,114,.06); scroll-snap-align:start; }
@@ -222,7 +228,7 @@
 
 <!-- HERO -->
 <section class="services-hero">
-  <img class="services-hero-photo" src="/photo-services.webp" srcset="/photo-services-720.webp 720w, /photo-services.webp 1400w" sizes="(max-width: 780px) 100vw, 64vw" alt="Строительные услуги компании" width="1400" height="1120" fetchpriority="high" decoding="async">
+  <img class="services-hero-photo" src="/photo-services.webp?v=20260727b" srcset="/photo-services-720.webp?v=20260727b 720w, /photo-services.webp?v=20260727b 1400w" sizes="(max-width: 780px) 100vw, 64vw" data-fallback="/photo-services.png" alt="Строительные услуги компании" width="1400" height="1120" fetchpriority="high" decoding="async">
   <div class="services-hero-blend"></div>
   <!-- Building SVG (same style as Главная) -->
   <svg style="display:none" viewBox="0 0 640 440" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -283,19 +289,21 @@
   </div>
 
   <!-- Stats strip -->
-  <div class="hero-stats-row" style="position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.12);background:rgba(7,20,40,.52);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);">
-    <div style="padding:16px 28px;border-right:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:12px;">
+  <div class="hero-stats-shell">
+  <div class="hero-stats-row">
+    <div class="hero-stat-item" style="border-right:1px solid rgba(255,255,255,.08);">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(74,184,200,.75)" stroke-width="1.4"><path d="M3 21V6l9-4 9 4v15"/><rect x="9" y="12" width="6" height="9"/></svg>
-      <div><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">17+</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">реализованных объектов</span></div>
+      <div class="hero-stat-content"><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">17+</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">реализованных объектов</span></div>
     </div>
-    <div style="padding:16px 28px;border-right:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:12px;">
+    <div class="hero-stat-item" style="border-right:1px solid rgba(255,255,255,.08);">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(74,184,200,.75)" stroke-width="1.4"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8v4h8z"/></svg>
-      <div><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">с 2021</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">года на рынке</span></div>
+      <div class="hero-stat-content"><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">с 2021</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">года на рынке</span></div>
     </div>
-    <div style="padding:16px 28px;display:flex;align-items:center;gap:12px;">
+    <div class="hero-stat-item">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(74,184,200,.75)" stroke-width="1.4"><polygon points="12 2 2 7 12 12 22 7"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-      <div><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">14+</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">направлений услуг</span></div>
+      <div class="hero-stat-content"><strong style="display:block;color:#fff;font-size:20px;font-weight:800;line-height:1.1;">14+</strong><span style="display:block;color:rgba(255,255,255,.55);font-size:11px;margin-top:3px;">направлений услуг</span></div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -350,7 +358,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Кровельный пирог: пароизоляция, уклоны, утепление, гидроизоляционный ковер, примыкания и испытание проливом.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="/svc-09-roof-card.webp" alt="Устройство гидроизоляции и кровельного пирога" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="/svc-09-roof-card.webp?v=20260727b" data-fallback="/svc-09-roof.png" alt="Устройство гидроизоляции и кровельного пирога" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -362,7 +370,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Вертикальная гидроизоляция фундамента с подготовкой основания, защитой узлов, дренажом и контролем слоя.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="/svc-07-foundation-card.webp" alt="Вертикальная гидроизоляция фундамента" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="/svc-07-foundation-card.webp?v=20260727b" data-fallback="/svc-07-foundation.png" alt="Вертикальная гидроизоляция фундамента" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -374,7 +382,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Котлованы и траншеи, водоотлив, вывоз грунта, обратная засыпка, планировка и геодезический контроль.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="/svc-11-earthworks-card.webp" alt="Земляные работы и разработка котлована" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="/svc-11-earthworks-card.webp?v=20260727b" data-fallback="/svc-11-earthworks.png" alt="Земляные работы и разработка котлована" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -386,7 +394,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Монтаж ХВС/ГВС, пожаротушения, канализации, отопления и сантехники с испытаниями и пуском.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="/svc-04-pipes-card.webp" alt="Монтаж инженерных сетей ХВС, ГВС и пожаротушения" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="/svc-04-pipes-card.webp?v=20260727b" data-fallback="/svc-04-pipes.png" alt="Монтаж инженерных сетей ХВС, ГВС и пожаротушения" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -398,7 +406,7 @@
           <p style="font-size:13px;color:#627486;line-height:1.6;">Установка сертифицированных дверных блоков и ревизионных люков с анкеровкой, герметизацией и регулировкой.</p>
         </div>
         <div style="height:132px;position:relative;overflow:hidden;">
-          <img src="/svc-10-doors-card.webp" alt="Установка дверных блоков и люков на строительном объекте" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="/svc-10-doors-card.webp?v=20260727b" data-fallback="/svc-10-doors.png" alt="Установка дверных блоков и люков на строительном объекте" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.28) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div style="padding:10px 22px 13px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13px;font-weight:600;color:#103f72;">Подробнее →</a></div>
@@ -457,7 +465,7 @@
           <p style="font-size:13.5px;color:#627486;line-height:1.65;max-width:520px;">Прямые поставки материалов от заводов: подбор по проекту, комплектация, графики JIT, логистика и документы.</p>
         </div>
         <div class="svc-feature-media" style="position:relative;overflow:hidden;">
-          <img src="/svc-12-supply-card.webp" alt="Поставка строительных материалов на объект" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="/svc-12-supply-card.webp?v=20260727b" data-fallback="/svc-12-supply.png" alt="Поставка строительных материалов на объект" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.32) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div class="svc-feature-link" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 24px 18px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13.5px;font-weight:700;color:#103f72;">Подробнее →</a></div>
@@ -469,7 +477,7 @@
           <p style="font-size:13.5px;color:#627486;line-height:1.65;max-width:520px;">Аренда строительной спецтехники для объектов в Москве и МО: краны, манипуляторы и подбор техники под задачу.</p>
         </div>
         <div class="svc-feature-media" style="position:relative;overflow:hidden;">
-          <img src="/svc-13-equipment-card.webp" alt="Аренда строительной спецтехники" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
+          <img src="/svc-13-equipment-card.webp?v=20260727b" data-fallback="/svc-13-equipment.png" alt="Аренда строительной спецтехники" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,34,64,.32) 0%,transparent 58%);pointer-events:none;"></div>
         </div>
         <div class="svc-feature-link" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 24px 18px;border-top:1px solid #f0f6fa;"><a href="#" data-service-details style="font-size:13.5px;font-weight:700;color:#103f72;">Подробнее →</a><a class="service-external-btn" href="https://as-groupp.ru" target="_blank" rel="noopener">Арендовать спецтехнику →</a></div>
@@ -500,7 +508,7 @@
     <button type="button" id="serviceModalClose" class="service-modal-close" aria-label="Закрыть">×</button>
     <div class="service-modal-inner">
       <div class="service-modal-aside">
-        <img id="serviceModalImage" src="/photo-services.webp" alt="">
+        <img id="serviceModalImage" src="/photo-services.webp?v=20260727b" data-fallback="/photo-services.png" alt="">
       </div>
       <div class="service-modal-content">
         <span class="service-modal-eyebrow">Состав работ</span>
@@ -520,7 +528,7 @@
 <section style="padding:0 0 48px;">
   <div style="width:min(1240px,calc(100% - 48px));margin:0 auto;">
     <div style="border-radius:14px;overflow:hidden;position:relative;background:linear-gradient(110deg,#0d2240 0%,#0f2d50 55%,#0d2240 100%);">
-      <img class="cta-photo" src="/photo-hero.webp" alt="Строительный объект с башенными кранами" loading="lazy" decoding="async">
+      <img class="cta-photo" src="/photo-hero.webp?v=20260727b" data-fallback="/photo-hero.png" alt="Строительный объект с башенными кранами" loading="lazy" decoding="async">
       <div class="cta-photo-overlay"></div>
       <div class="cta-inner" style="position:relative;z-index:1;display:flex;align-items:center;gap:36px;padding:44px 48px;flex-wrap:wrap;">
         <div style="max-width:460px;">
@@ -809,6 +817,16 @@
       }
 };
 
+    const serviceFallbackImages = {
+      roof: '/svc-09-roof.png',
+      foundation: '/svc-07-foundation.png',
+      earthworks: '/svc-11-earthworks.png',
+      engineering: '/svc-04-pipes.png',
+      doors: '/svc-10-doors.png',
+      supply: '/svc-12-supply.png',
+      equipment: '/svc-13-equipment.png'
+    };
+
     const modal = document.getElementById('serviceModal');
     const modalClose = document.getElementById('serviceModalClose');
     const modalTitle = document.getElementById('serviceModalTitle');
@@ -863,7 +881,13 @@
       if (!service || !modal) return;
       modalTitle.textContent = service.title;
       modalSummary.textContent = service.summary;
-      modalImage.src = service.image;
+      modalImage.removeAttribute('data-fallback-used');
+      if (serviceFallbackImages[serviceId]) {
+        modalImage.setAttribute('data-fallback', serviceFallbackImages[serviceId]);
+      } else {
+        modalImage.removeAttribute('data-fallback');
+      }
+      modalImage.src = service.image + (service.image.includes('.webp') ? '?v=20260727b' : '');
       modalImage.alt = service.title;
       modalList.innerHTML = '';
       service.items.forEach((item) => {

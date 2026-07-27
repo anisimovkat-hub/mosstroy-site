@@ -1,6 +1,16 @@
 (function () {
   const storageKey = 'edifice_cookie_consent';
 
+  document.addEventListener('error', function (event) {
+    const image = event.target;
+    if (!(image instanceof HTMLImageElement)) return;
+    const fallback = image.getAttribute('data-fallback');
+    if (!fallback || image.getAttribute('data-fallback-used') === 'true') return;
+    image.setAttribute('data-fallback-used', 'true');
+    image.removeAttribute('srcset');
+    image.src = fallback;
+  }, true);
+
   function saveConsent(value) {
     try {
       window.localStorage.setItem(storageKey, value);
