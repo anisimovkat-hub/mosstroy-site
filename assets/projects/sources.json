@@ -21,8 +21,8 @@
   },
   "mytischi-city": {
     "file": "mytischi-city.jpg",
-    "official": false,
-    "source": "https://dmitry-sasin.livejournal.com/349203.html"
+    "official": true,
+    "source": "Пользовательский снимок визуализации с официального сайта https://мытищи-сити.рф/"
   },
   "atlantis": {
     "file": "atlantis.jpg",
