@@ -52,19 +52,24 @@
   .section-title { display:flex; align-items:center; gap:9px; margin-bottom:22px; }
   .section-title span { display:inline-block; width:7px; height:7px; border-radius:50%; background:#4ab8c8; box-shadow:0 0 0 4px rgba(74,184,200,.18); flex-shrink:0; }
   .section-title h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #142033; }
-  .quality-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; }
-  .quality-card { min-height: 188px; padding:22px 20px; border:1px solid #dce8f2; border-radius:12px; background:#fff; box-shadow:0 3px 18px rgba(14,61,114,.07); }
-  .quality-card:nth-child(8n+1), .quality-card:nth-child(8n+3), .quality-card:nth-child(8n+6), .quality-card:nth-child(8n+8) { background:linear-gradient(145deg,#0d2240,#103f72); border-color:#103f72; box-shadow:0 8px 24px rgba(13,34,64,.16); }
-  .quality-card strong { display:block; margin-bottom:10px; color:#103f72; font-size:16px; line-height:1.25; }
-  .quality-card p { color:#627486; font-size:13px; line-height:1.6; }
-  .quality-card:nth-child(8n+1) strong, .quality-card:nth-child(8n+3) strong, .quality-card:nth-child(8n+6) strong, .quality-card:nth-child(8n+8) strong { color:#fff; }
-  .quality-card:nth-child(8n+1) p, .quality-card:nth-child(8n+3) p, .quality-card:nth-child(8n+6) p, .quality-card:nth-child(8n+8) p { color:rgba(255,255,255,.76); }
+  .about-company-card { padding:28px 30px; border:1px solid #dce8f2; border-radius:16px; background:#fff; box-shadow:0 4px 24px rgba(14,61,114,.08); }
+  .about-company-card p { color:#506476; font-size:15px; line-height:1.75; }
+  .about-company-card strong { color:#142033; }
+  .quality-intro { max-width:850px; margin-bottom:22px; color:#142033; font-size:18px; font-weight:800; line-height:1.4; }
+  .quality-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+  .quality-card { display:grid; grid-template-columns:42px minmax(0,1fr); gap:14px; align-content:start; padding:24px 22px; border:1px solid #dce8f2; border-radius:12px; background:#fff; box-shadow:0 3px 18px rgba(14,61,114,.07); }
+  .quality-card-index { display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:#e8f6f8; color:#103f72; font-size:14px; font-weight:800; }
+  .quality-card strong { display:block; margin-bottom:9px; color:#103f72; font-size:16px; line-height:1.3; }
+  .quality-card p { color:#627486; font-size:13px; line-height:1.65; }
+  .quality-card--accent { background:linear-gradient(145deg,#0d2240,#103f72); border-color:#103f72; box-shadow:0 8px 24px rgba(13,34,64,.16); }
+  .quality-card--accent .quality-card-index { background:rgba(74,184,200,.18); color:#70d0dd; }
+  .quality-card--accent strong { color:#fff; }
+  .quality-card--accent p { color:rgba(255,255,255,.78); }
+  .sro-request { display:inline-flex; align-items:center; justify-content:center; width:max-content; margin-top:15px; padding:10px 14px; border:1px solid rgba(112,208,221,.55); border-radius:8px; color:#fff; font-size:12.5px; font-weight:800; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
+  .sro-request:hover { transform:translateY(-1px); background:rgba(74,184,200,.13); box-shadow:0 8px 22px rgba(0,0,0,.18); }
   .contacts-compact-grid { display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start; }
   .contacts-info-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px; }
   .contacts-tender { border-left:1px solid #e6eff6;padding-left:28px; }
-  @media (max-width: 980px) {
-    .quality-grid { grid-template-columns: repeat(2, 1fr); }
-  }
   @media (max-width: 920px) {
     #menuToggle { display: flex !important; }
     #mainNav { display: none !important; position: absolute; top: 62px; right: 0; left: auto; width: min(282px, calc(100vw - 48px)); flex-direction: column; gap: 2px; padding: 8px; background: rgba(255,255,255,.96); border: 1px solid #d4e0ea; border-radius: 14px; box-shadow: 0 18px 45px rgba(13,34,64,.18); z-index: 99; backdrop-filter: blur(18px); }
@@ -81,16 +86,14 @@
     .tech-hero-blend { background: linear-gradient(180deg, rgba(13,34,64,0) 0%, rgba(13,34,64,.18) 28%, rgba(13,34,64,.75) 48%, #0d2240 65%, #0d2240 100%) !important; }
     .tech-hero-content { width:min(100% - 48px,520px) !important; padding:clamp(300px,46vh,410px) 0 32px !important; justify-content:flex-end !important; }
     .tech-hero-title { font-size:clamp(34px,10vw,46px) !important; line-height:1.04 !important; }
-    .quality-grid { grid-template-columns:repeat(2, 1fr) !important; gap:10px !important; }
-    .quality-card { min-height: 152px !important; padding:16px 13px !important; border-radius:10px !important; }
-    .quality-card strong { font-size:13.5px !important; margin-bottom:7px !important; }
-    .quality-card p { font-size:11.5px !important; line-height:1.45 !important; }
-    .quality-card:nth-child(8n+1), .quality-card:nth-child(8n+3), .quality-card:nth-child(8n+6), .quality-card:nth-child(8n+8) { background:#fff; border-color:#dce8f2; box-shadow:0 3px 18px rgba(14,61,114,.07); }
-    .quality-card:nth-child(8n+1) strong, .quality-card:nth-child(8n+3) strong, .quality-card:nth-child(8n+6) strong, .quality-card:nth-child(8n+8) strong { color:#103f72; }
-    .quality-card:nth-child(8n+1) p, .quality-card:nth-child(8n+3) p, .quality-card:nth-child(8n+6) p, .quality-card:nth-child(8n+8) p { color:#627486; }
-    .quality-card:nth-child(4n+1), .quality-card:nth-child(4n+4) { background:linear-gradient(145deg,#0d2240,#103f72); border-color:#103f72; box-shadow:0 8px 24px rgba(13,34,64,.16); }
-    .quality-card:nth-child(4n+1) strong, .quality-card:nth-child(4n+4) strong { color:#fff; }
-    .quality-card:nth-child(4n+1) p, .quality-card:nth-child(4n+4) p { color:rgba(255,255,255,.76); }
+    .about-company-card { padding:22px 20px !important; border-radius:12px !important; }
+    .about-company-card p { font-size:13.5px !important; line-height:1.65 !important; }
+    .quality-intro { font-size:16px !important; margin-bottom:18px !important; }
+    .quality-grid { grid-template-columns:1fr !important; gap:10px !important; }
+    .quality-card { grid-template-columns:36px minmax(0,1fr) !important; gap:11px !important; padding:18px 15px !important; border-radius:10px !important; }
+    .quality-card-index { width:34px !important; height:34px !important; font-size:13px !important; }
+    .quality-card strong { font-size:14px !important; margin-bottom:7px !important; }
+    .quality-card p { font-size:13px !important; line-height:1.55 !important; }
     .contacts-compact-grid { grid-template-columns: 1fr !important; gap: 22px !important; }
     .contacts-info-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     .contacts-tender { border-left: 0 !important; border-top: 1px solid #e6eff6 !important; padding-left: 0 !important; padding-top: 20px !important; }
@@ -139,22 +142,48 @@
   <div class="tech-hero-blend"></div>
   <div class="tech-hero-content">
     <h1 class="tech-hero-title"><span>Технологии и </span><br>качество</h1>
-    <p class="tech-hero-lead">Edifice ведёт объекты от фундамента до чистовой отделки по СНиП, ГОСТ и СП. На каждом этапе контролируем сроки, материалы, безопасность, качество выполнения и исполнительную документацию.</p>
+    <p class="tech-hero-lead">Edifice — строительный подрядчик полного цикла в жилищном строительстве. С 2021 года ведём объекты от фундамента до чистовой отделки.</p>
   </div>
 </section>
 
-<section style="padding:48px 0 34px;">
+<section style="padding:48px 0 28px;">
+  <div class="section-wrap">
+    <div class="section-title"><span></span><h2>О компании</h2></div>
+    <div class="about-company-card">
+      <p><strong>Edifice — строительный подрядчик полного цикла в жилищном строительстве.</strong> С 2021 года ведём объекты от фундамента до чистовой отделки. Основные направления деятельности — монолитные работы, кладка и отделка. Работаем по СНиП, ГОСТ и СП; членство в СРО № <strong>СРО-С-038-15092009</strong>. На каждом этапе — производственный контроль, исполнительная документация в полном объёме. Обеспечиваем бесперебойную логистику: прямые поставки строительных материалов с заводов, поэтажная комплектация. За спиной — реализованные объекты в Москве и Московской области.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 34px;">
   <div class="section-wrap">
     <div class="section-title"><span></span><h2>Система качества</h2></div>
+    <p class="quality-intro">Система качества подтверждается совокупностью факторов и преимуществ среди конкурентов:</p>
     <div class="quality-grid">
-      <article class="quality-card"><strong>Качество работ и СРО</strong><p>Компания состоит в СРО № СРО-С-038-15092009. Для получения выписки напишите на почту тендерного отдела: real.stroy.real@yandex.ru.</p></article>
-      <article class="quality-card"><strong>Нормативы и безопасность</strong><p>Выполняем работы по СНиП, ГОСТ и СП, соблюдаем требования охраны труда, пожарной безопасности и санитарные нормы.</p></article>
-      <article class="quality-card"><strong>Графики и контрольные точки</strong><p>Фиксируем этапы производства работ, сроки по договору и контрольные точки для проверки качества и хода работ.</p></article>
-      <article class="quality-card"><strong>Входной контроль материалов</strong><p>Проверяем паспорта, сертификаты качества, маркировку партий и соответствие материалов проектным спецификациям.</p></article>
-      <article class="quality-card"><strong>Логистика материалов</strong><p>Организуем прямые поставки с заводов и поэтапную комплектацию под график работ на объекте.</p></article>
-      <article class="quality-card"><strong>Команда АУП</strong><p>В работе участвуют ПТО, сметный, тендерный, юридический отделы и бухгалтерия; объекты ведут начальники участков и производители работ.</p></article>
-      <article class="quality-card"><strong>Профильные бригады</strong><p>Подбираем квалифицированные бригады под разные виды работ. Сотрудники оформлены официально и имеют необходимые удостоверения.</p></article>
-      <article class="quality-card"><strong>Исполнительная документация</strong><p>Ведём исполнительную документацию в полном объёме, защищаем выполненные объёмы и передаём объект заказчику по этапам сдачи.</p></article>
+      <article class="quality-card quality-card--accent">
+        <span class="quality-card-index" aria-hidden="true">01</span>
+        <div><strong>Качество работ</strong><p>Организация является членом СРО — Саморегулируемой организации в области строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства. Регистрационный номер СРО: <b>СРО-С-038-15092009</b>.</p><a class="sro-request" href="mailto:real.stroy.real@yandex.ru?subject=Запрос%20выписки%20СРО%20СРО-С-038-15092009">Запросить выписку СРО →</a></div>
+      </article>
+      <article class="quality-card">
+        <span class="quality-card-index" aria-hidden="true">02</span>
+        <div><strong>Соответствие нормативам и безопасность при производстве работ</strong><p>Производство работ в соответствии со СНиП, ГОСТ и СП. Соблюдение санитарных норм, правил охраны труда (ОТ) и требований по пожарной безопасности (ПБ). Использование средств индивидуальной защиты (СИЗ). Проведение регулярных инструктажей, ведение специальных журналов. Регулярные аттестации сотрудников в центрах повышения квалификации: промышленная безопасность, электробезопасность, пожарная безопасность, охрана труда. Наличие квалификационных удостоверений сотрудников для производства работ. Разработка проектов производства работ (ППР).</p></div>
+      </article>
+      <article class="quality-card">
+        <span class="quality-card-index" aria-hidden="true">03</span>
+        <div><strong>Графики производства работ и контрольные точки</strong><p>Соблюдение сроков и этапов выполнения работ по договору.</p></div>
+      </article>
+      <article class="quality-card quality-card--accent">
+        <span class="quality-card-index" aria-hidden="true">04</span>
+        <div><strong>Входной контроль и логистика строительных материалов</strong><p>Проверка паспортов, сертификатов качества, маркировки партий и соответствия спецификациям по проекту. Организация прямых поставок с заводов и поэтапная комплектация под график работ.</p></div>
+      </article>
+      <article class="quality-card">
+        <span class="quality-card-index" aria-hidden="true">05</span>
+        <div><strong>Профессиональный штат административно-управленческого персонала (АУП)</strong><p>Сильная команда, состоящая из отдела ПТО, сметного отдела, тендерного отдела, юридического отдела и бухгалтерии. Контроль за выполнением работ и руководство бригадами на объектах начальниками участка, производителями работ. Выполнение полного комплекса исполнительной документации (ИД), защита выполненных объёмов работ, финальная сдача Заказчику.</p></div>
+      </article>
+      <article class="quality-card">
+        <span class="quality-card-index" aria-hidden="true">06</span>
+        <div><strong>Профессиональный штат рабочих</strong><p>Профильные квалифицированные бригады под различные виды работ. Официальное трудоустройство.</p></div>
+      </article>
     </div>
   </div>
 </section>
