@@ -56,17 +56,14 @@
   .about-company-card p { color:#506476; font-size:15px; line-height:1.75; }
   .about-company-card strong { color:#142033; }
   .quality-intro { max-width:850px; margin-bottom:22px; color:#142033; font-size:18px; font-weight:800; line-height:1.4; }
-  .quality-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
-  .quality-card { display:grid; grid-template-columns:42px minmax(0,1fr); gap:14px; align-content:start; padding:24px 22px; border:1px solid #dce8f2; border-radius:12px; background:#fff; box-shadow:0 3px 18px rgba(14,61,114,.07); }
+  .quality-grid { overflow:hidden; border:1px solid #dce8f2; border-radius:16px; background:#fff; box-shadow:0 4px 24px rgba(14,61,114,.08); }
+  .quality-card { display:grid; grid-template-columns:42px minmax(240px,.72fr) minmax(0,1.28fr); gap:20px; align-items:start; padding:24px 28px; background:#fff; }
+  .quality-card + .quality-card { border-top:1px solid #e6eff6; }
   .quality-card-index { display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:#e8f6f8; color:#103f72; font-size:14px; font-weight:800; }
-  .quality-card strong { display:block; margin-bottom:9px; color:#103f72; font-size:16px; line-height:1.3; }
+  .quality-card strong { display:block; color:#103f72; font-size:16px; line-height:1.35; }
   .quality-card p { color:#627486; font-size:13px; line-height:1.65; }
-  .quality-card--accent { background:linear-gradient(145deg,#0d2240,#103f72); border-color:#103f72; box-shadow:0 8px 24px rgba(13,34,64,.16); }
-  .quality-card--accent .quality-card-index { background:rgba(74,184,200,.18); color:#70d0dd; }
-  .quality-card--accent strong { color:#fff; }
-  .quality-card--accent p { color:rgba(255,255,255,.78); }
-  .sro-request { display:inline-flex; align-items:center; justify-content:center; width:max-content; margin-top:15px; padding:10px 14px; border:1px solid rgba(112,208,221,.55); border-radius:8px; color:#fff; font-size:12.5px; font-weight:800; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
-  .sro-request:hover { transform:translateY(-1px); background:rgba(74,184,200,.13); box-shadow:0 8px 22px rgba(0,0,0,.18); }
+  .sro-note { margin-top:10px !important; padding-top:10px; border-top:1px solid #e6eff6; color:#506476 !important; font-size:12.5px !important; }
+  .sro-note a { color:#103f72; font-weight:800; text-decoration:underline; text-underline-offset:3px; }
   .contacts-compact-grid { display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start; }
   .contacts-info-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px; }
   .contacts-tender { border-left:1px solid #e6eff6;padding-left:28px; }
@@ -89,11 +86,13 @@
     .about-company-card { padding:22px 20px !important; border-radius:12px !important; }
     .about-company-card p { font-size:13.5px !important; line-height:1.65 !important; }
     .quality-intro { font-size:16px !important; margin-bottom:18px !important; }
-    .quality-grid { grid-template-columns:1fr !important; gap:10px !important; }
-    .quality-card { grid-template-columns:36px minmax(0,1fr) !important; gap:11px !important; padding:18px 15px !important; border-radius:10px !important; }
+    .quality-grid { border-radius:12px !important; }
+    .quality-card { grid-template-columns:36px minmax(0,1fr) !important; gap:8px 11px !important; padding:18px 15px !important; }
     .quality-card-index { width:34px !important; height:34px !important; font-size:13px !important; }
-    .quality-card strong { font-size:14px !important; margin-bottom:7px !important; }
+    .quality-card strong { align-self:center; font-size:14px !important; }
+    .quality-card-body { grid-column:2; }
     .quality-card p { font-size:13px !important; line-height:1.55 !important; }
+    .sro-note { font-size:12px !important; }
     .contacts-compact-grid { grid-template-columns: 1fr !important; gap: 22px !important; }
     .contacts-info-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     .contacts-tender { border-left: 0 !important; border-top: 1px solid #e6eff6 !important; padding-left: 0 !important; padding-top: 20px !important; }
@@ -160,29 +159,35 @@
     <div class="section-title"><span></span><h2>Система качества</h2></div>
     <p class="quality-intro">Система качества подтверждается совокупностью факторов и преимуществ среди конкурентов:</p>
     <div class="quality-grid">
-      <article class="quality-card quality-card--accent">
+      <article class="quality-card">
         <span class="quality-card-index" aria-hidden="true">01</span>
-        <div><strong>Качество работ</strong><p>Организация является членом СРО — Саморегулируемой организации в области строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства. Регистрационный номер СРО: <b>СРО-С-038-15092009</b>.</p><a class="sro-request" href="mailto:real.stroy.real@yandex.ru?subject=Запрос%20выписки%20СРО%20СРО-С-038-15092009">Запросить выписку СРО →</a></div>
+        <strong>Качество работ</strong>
+        <div class="quality-card-body"><p>Организация является членом СРО — Саморегулируемой организации в области строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства. Регистрационный номер СРО: <b>СРО-С-038-15092009</b>.</p><p class="sro-note">Если вы хотите запросить выписку СРО, напишите нам на электронную почту <a href="mailto:real.stroy.real@yandex.ru">real.stroy.real@yandex.ru</a>.</p></div>
       </article>
       <article class="quality-card">
         <span class="quality-card-index" aria-hidden="true">02</span>
-        <div><strong>Соответствие нормативам и безопасность при производстве работ</strong><p>Производство работ в соответствии со СНиП, ГОСТ и СП. Соблюдение санитарных норм, правил охраны труда (ОТ) и требований по пожарной безопасности (ПБ). Использование средств индивидуальной защиты (СИЗ). Проведение регулярных инструктажей, ведение специальных журналов. Регулярные аттестации сотрудников в центрах повышения квалификации: промышленная безопасность, электробезопасность, пожарная безопасность, охрана труда. Наличие квалификационных удостоверений сотрудников для производства работ. Разработка проектов производства работ (ППР).</p></div>
+        <strong>Соответствие нормативам и безопасность при производстве работ</strong>
+        <div class="quality-card-body"><p>Производство работ в соответствии со СНиП, ГОСТ и СП. Соблюдение санитарных норм, правил охраны труда (ОТ) и требований по пожарной безопасности (ПБ). Использование средств индивидуальной защиты (СИЗ). Проведение регулярных инструктажей, ведение специальных журналов. Регулярные аттестации сотрудников в центрах повышения квалификации: промышленная безопасность, электробезопасность, пожарная безопасность, охрана труда. Наличие квалификационных удостоверений сотрудников для производства работ. Разработка проектов производства работ (ППР).</p></div>
       </article>
       <article class="quality-card">
         <span class="quality-card-index" aria-hidden="true">03</span>
-        <div><strong>Графики производства работ и контрольные точки</strong><p>Соблюдение сроков и этапов выполнения работ по договору.</p></div>
+        <strong>Графики производства работ и контрольные точки</strong>
+        <div class="quality-card-body"><p>Соблюдение сроков и этапов выполнения работ по договору.</p></div>
       </article>
-      <article class="quality-card quality-card--accent">
+      <article class="quality-card">
         <span class="quality-card-index" aria-hidden="true">04</span>
-        <div><strong>Входной контроль и логистика строительных материалов</strong><p>Проверка паспортов, сертификатов качества, маркировки партий и соответствия спецификациям по проекту. Организация прямых поставок с заводов и поэтапная комплектация под график работ.</p></div>
+        <strong>Входной контроль и логистика строительных материалов</strong>
+        <div class="quality-card-body"><p>Проверка паспортов, сертификатов качества, маркировки партий и соответствия спецификациям по проекту. Организация прямых поставок с заводов и поэтапная комплектация под график работ.</p></div>
       </article>
       <article class="quality-card">
         <span class="quality-card-index" aria-hidden="true">05</span>
-        <div><strong>Профессиональный штат административно-управленческого персонала (АУП)</strong><p>Сильная команда, состоящая из отдела ПТО, сметного отдела, тендерного отдела, юридического отдела и бухгалтерии. Контроль за выполнением работ и руководство бригадами на объектах начальниками участка, производителями работ. Выполнение полного комплекса исполнительной документации (ИД), защита выполненных объёмов работ, финальная сдача Заказчику.</p></div>
+        <strong>Профессиональный штат административно-управленческого персонала (АУП)</strong>
+        <div class="quality-card-body"><p>Сильная команда, состоящая из отдела ПТО, сметного отдела, тендерного отдела, юридического отдела и бухгалтерии. Контроль за выполнением работ и руководство бригадами на объектах начальниками участка, производителями работ. Выполнение полного комплекса исполнительной документации (ИД), защита выполненных объёмов работ, финальная сдача Заказчику.</p></div>
       </article>
       <article class="quality-card">
         <span class="quality-card-index" aria-hidden="true">06</span>
-        <div><strong>Профессиональный штат рабочих</strong><p>Профильные квалифицированные бригады под различные виды работ. Официальное трудоустройство.</p></div>
+        <strong>Профессиональный штат рабочих</strong>
+        <div class="quality-card-body"><p>Профильные квалифицированные бригады под различные виды работ. Официальное трудоустройство.</p></div>
       </article>
     </div>
   </div>
