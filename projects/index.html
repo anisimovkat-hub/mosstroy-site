@@ -19,12 +19,12 @@
 <meta property="og:title" content="Реализованные проекты — Edifice">
 <meta property="og:description" content="Жилые комплексы, жилые дома и коммерческие помещения в Москве и Московской области.">
 <meta property="og:url" content="https://edifice-stroy.ru/projects/">
-<meta property="og:image" content="https://edifice-stroy.ru/photo-about.png">
+<meta property="og:image" content="https://edifice-stroy.ru/photo-about-social.jpg">
 <meta property="og:image:alt" content="Реализованные строительные проекты Edifice">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Реализованные проекты — Edifice">
 <meta name="twitter:description" content="Каталог объектов Edifice в Москве и Московской области.">
-<meta name="twitter:image" content="https://edifice-stroy.ru/photo-about.png">
+<meta name="twitter:image" content="https://edifice-stroy.ru/photo-about-social.jpg">
 <meta name="twitter:image:alt" content="Реализованные строительные проекты Edifice">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://edifice-stroy.ru/projects/#webpage","url":"https://edifice-stroy.ru/projects/","name":"Реализованные проекты — Edifice","isPartOf":{"@id":"https://edifice-stroy.ru/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://edifice-stroy.ru/"},{"@type":"ListItem","position":2,"name":"Проекты","item":"https://edifice-stroy.ru/projects/"}]}]}</script>
 <script defer src="/assets/site-enhancements.js?v=20260727c"></script>
@@ -184,7 +184,7 @@
 
 <!-- HERO -->
 <section style="position:relative;min-height:420px;overflow:hidden;display:flex;align-items:center;background:#d8ecf8;">
-  <img src="/assets/projects/odintsovo-city-2.webp?v=20260727b" data-fallback="/assets/projects/odintsovo-city-2.jpg" alt="Реализованный строительный объект Edifice" width="1200" height="900" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center right;filter:saturate(.95);">
+  <img src="/assets/projects/odintsovo-city-2.webp?v=20260727b" alt="Реализованный строительный объект Edifice" width="1200" height="900" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center right;filter:saturate(.95);">
   <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(247,251,253,.98) 0%,rgba(247,251,253,.92) 38%,rgba(235,246,254,.72) 58%,rgba(13,34,64,.12) 100%);"></div>
   <div style="position:absolute;inset:0;background:repeating-linear-gradient(rgba(16,63,112,.035) 0 1px,transparent 1px 44px),repeating-linear-gradient(90deg,rgba(16,63,112,.035) 0 1px,transparent 1px 44px);"></div>
   <div style="position:relative;z-index:1;width:min(1200px,calc(100% - 48px));margin:0 auto;padding:70px 0 90px;">
@@ -1440,25 +1440,6 @@
       'u2': '/assets/projects/u2.webp?v=20260727b',
       'vyazemy-park': '/assets/projects/vyazemy-park.webp?v=20260727b'
     };
-    const projectFallbackImages = {
-      'dmitrov-city': '/assets/projects/dmitrov-city.jpg',
-      'afrodita': '/assets/projects/afrodita.jpg',
-      'lesnoy-kvartal': '/assets/projects/lesnoy-kvartal.jpg',
-      'brigantina': '/assets/projects/brigantina.jpg',
-      'mytischi-city': '/assets/projects/mytischi-city.jpg',
-      'atlantis': '/assets/projects/atlantis.jpg',
-      'renovation-lihachevsky': '/assets/projects/renovation-lihachevsky.jpg',
-      'vysokie-zhavoronki': '/assets/projects/vysokie-zhavoronki.jpg',
-      'pinsky': '/assets/projects/pinsky.png',
-      'mascotte': '/assets/projects/mascotte.png',
-      'renovation-raduzhnaya': '/assets/projects/renovation-raduzhnaya.jpg',
-      'mytischi-city-1-5': '/assets/projects/mytischi-city-1-5.jpg?v=20260728a',
-      'odintsovo-city-23': '/assets/projects/odintsovo-city-23.jpg',
-      'megapolis': '/assets/projects/megapolis.jpg',
-      'odintsovo-city-2': '/assets/projects/odintsovo-city-2.jpg',
-      'u2': '/assets/projects/u2.jpg',
-      'vyazemy-park': '/assets/projects/vyazemy-park.jpg'
-    };
     const cards = Array.from(document.querySelectorAll('#projectCards article'));
     const foundCount = document.getElementById('foundCount');
     const emptyState = document.getElementById('emptyState');
@@ -1562,8 +1543,6 @@
       modalFields.photoTitle.textContent = project.title;
       const imageSrc = projectImages[projectId];
       if (imageSrc) {
-        modalFields.image.removeAttribute('data-fallback-used');
-        modalFields.image.setAttribute('data-fallback', projectFallbackImages[projectId] || '');
         modalFields.image.src = imageSrc;
         modalFields.image.alt = project.title;
         modalFields.photo.classList.add('has-photo');
@@ -1594,7 +1573,6 @@
       if (!imageSrc || !media) return;
       const image = document.createElement('img');
       image.src = imageSrc;
-      image.setAttribute('data-fallback', projectFallbackImages[card.dataset.projectId] || '');
       image.alt = card.dataset.title || 'Фото объекта';
       image.loading = 'lazy';
       image.decoding = 'async';
